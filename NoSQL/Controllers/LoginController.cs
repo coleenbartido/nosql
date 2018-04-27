@@ -14,7 +14,6 @@ namespace NoSQL.Controllers
     {
 
         MongoContext _dbContext;
-        // GET: UserAccount
 
         public LoginController()
         {
@@ -36,12 +35,13 @@ namespace NoSQL.Controllers
             var count = document.FindAs<UserAccount>(query).Count();
             if (count == 0)
             {
-                return View("~/Views/Home/About.cshtml");
+                TempData["Message"] = "User does not exist";
+                return View("HomeLogin", user);
             }
             else
             {
-                TempData["Message"] = "User does not exist";
-                return View("HomeLogin", user);
+
+                return RedirectToAction("HomePage", "Home");
             }
             
         }
