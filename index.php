@@ -17,7 +17,7 @@
 
 		<!---->
     <link rel="icon" href="assets/bloog-logo.png" type="image/gif" sizes="16x16">
-    <link rel="stylesheet" href="login.css"/>
+    <link rel="stylesheet" href="assets/css/login.css"/>
 
 		<title>Bloog Login</title>
 	</head>
