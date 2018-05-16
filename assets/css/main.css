@@ -3494,12 +3494,21 @@ body {
 	margin-bottom:0px;
 	font-size:14px;
 	letter-spacing: 1px;
+	width: 258px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow:ellipsis;
+}
+
+.mini-post h3 a{
+	text-overflow: ellipsis;
 }
 
 .mini-post .read-more {
 	cursor: pointer;
 	text-decoration: none !important;
 	color: #17a2b8;
+	margin-bottom: 0px;
 }
 
 /* mini-post */
@@ -3535,7 +3544,7 @@ body {
 	width: 40px;
 	object-fit: cover;
 	margin-left: 15px;
-	margin-top: 20px;
+	margin-top: 10px;
 	/*position: absolute;
 	margin-left: 0px !important;
 	margin-right: -10px!important;
@@ -3543,7 +3552,7 @@ body {
 }
 
 .mini-post .author p{
-	margin-top: 35px;
+	margin-top: 25px;
 	margin-left: 10px;
 	text-align: left;
 	width: 140px;
@@ -3553,6 +3562,7 @@ body {
 	text-decoration: none!important;
 	color: #ffffff;
 	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .mini-post .img__description a:hover{
@@ -3567,8 +3577,13 @@ body {
 	margin-top: 10px;
 	text-transform:none;
 	letter-spacing: 1px;
-	line-height: 16px;
-	height: 65px;
+	line-height: 20px;
+	width:258px;
+	overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+	text-overflow: ellipsis;
 	overflow: hidden;
 }
 

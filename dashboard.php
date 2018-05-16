@@ -65,9 +65,9 @@
 
 							<article class="mini-post">
 								<header>
-									<h3><a href="#">Vitae sed condimentum</a></h3>
+									<h3><a href="#">This is a very long blog title idk anymore mang</a></h3>
 									<time style="text-align: left; font-size: 8px; padding-top: 6px;"class="published" datetime="2015-10-20">October 20, 2015</time>
-									<p class="text-snippet" style="">Spicy jalapeno pork belly burgdoggen pastrami, ham hock shankle turducken bresaola, burgdoggen filet mignon buffalo swine ball tip short ribs.</p>
+									<p class="text-snippet" style="">Spicy jalapeno pork belly burgdoggen pastrami, hasflkdjlaskfj alsdfjklaskjflasdjf laskdjflakjfla;sjfam hock shankle turducken bresaola, burgdoggen filet mignon buffalo swine ball tip short ribs.</p>
 									<p class="read-more"><a>Read More ›</a></p>
 								</header>
 								<div class="img__wrap">
@@ -82,7 +82,7 @@
 								<header>
 									<h3><a href="#">Vitae sed condimentum</a></h3>
 									<time style="text-align: left; font-size: 8px; padding-top: 6px;"class="published" datetime="2015-10-20">October 20, 2015</time>
-									<p style="text-align: left; font-size:12px; color:#4a4a4a; margin-top: 10px; text-transform:none; letter-spacing: 1px; line-height: 16px;">Spicy jalapeno pork belly burgdoggen pastrami, ham hock shankle turducken bresaola, burgdoggen filet mignon buffalo swine ball tip short ribs.</p>
+									<p class="text-snippet">Spicy jalapeno pork belly burgdoggen pastrami, ham hock shankle turducken bresaola, burgdoggen filet mignon buffalo swine ball tip short ribs.</p>
 									<p class="read-more"><a>Read More ›</a></p>
 
 								</header>
@@ -98,13 +98,13 @@
 								<header>
 									<h3><a href="#">Vitae sed condimentum</a></h3>
 									<time style="text-align: left; font-size: 8px; padding-top: 6px;"class="published" datetime="2015-10-20">October 20, 2015</time>
-									<p style="text-align: left; font-size:12px; color:#4a4a4a; margin-top: 10px; text-transform:none; letter-spacing: 1px; line-height: 16px;">Spicy jalapeno pork belly burgdoggen pastrami, ham hock shankle turducken bresaola, burgdoggen filet mignon buffalo swine ball tip short ribs.</p>
+									<p class="text-snippet">Spicy jalapeno pork belly burgdoggen pastrami, ham hock shankle turducken bresaola, burgdoggen filet mignon buffalo swine ball tip short ribs.</p>
 									<p class="read-more"><a>Read More ›</a></p>
 								</header>
 								<div class="img__wrap">
 									<a href="#" class="image"><img class="img__img" src="https://images.pexels.com/photos/1072784/pexels-photo-1072784.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="" /></a>
 									<div class="img__description">
-										<a href="#" class="author"><img src="https://images.pexels.com/photos/127229/pexels-photo-127229.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="" /><p>John Doe</p></a>
+										<a href="#" class="author"><img src="https://images.pexels.com/photos/127229/pexels-photo-127229.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="" /><p>Dexter Co</p></a>
 									</div>
 								</div>
 							</article>
@@ -114,14 +114,14 @@
 								<header>
 									<h3><a href="#">Vitae sed condimentum</a></h3>
 									<time style="text-align: left; font-size: 8px; padding-top: 6px;"class="published" datetime="2015-10-20">October 20, 2015</time>
-									<p style="text-align: left; font-size:12px; color:#4a4a4a; margin-top: 10px; text-transform:none; letter-spacing: 1px; line-height: 16px;">Spicy jalapeno pork belly burgdoggen pastrami, ham hock shankle turducken bresaola, burgdoggen filet mignon buffalo swine ball tip short ribs.</p>
+									<p class="text-snippet">Spicy jalapeno pork belly burgdoggen pastrami, ham hock shankle turducken bresaola, burgdoggen filet mignon buffalo swine ball tip short ribs.</p>
 									<p class="read-more"><a>Read More ›</a></p>
 								</header>
 
 								<div class="img__wrap">
 									<a href="#" class="image"><img class="img__img" src="https://images.pexels.com/photos/753994/pexels-photo-753994.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="" /></a>
 									<div class="img__description">
-										<a href="#" class="author"><img src="https://images.pexels.com/photos/343717/pexels-photo-343717.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt=""/><p>Juan Dela Crusldfjals;kdfjz</p></a>
+										<a href="#" class="author"><img src="https://images.pexels.com/photos/343717/pexels-photo-343717.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt=""/><p>Juan Dela Cruz is a long name</p></a>
 										<!--a href="#" class="button small">Follow</a-->
 									</div>
 								</div>
