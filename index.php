@@ -1,8 +1,10 @@
 <?php
 	
+	//require_once __WEBROOT__ . '/includes/safestring.class.php'; 
 	session_start();
-	if(isset($_SESSION['user'])){
-        header("location: dashboard.php");
+	
+	if(isset($_SESSION['userID'])){
+        header("Location: dashboard.php");
         exit();
     }
 	

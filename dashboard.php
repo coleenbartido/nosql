@@ -1,8 +1,14 @@
 <?php
-	include_once('../controller/dashboardController.php');
+	
 
-	$dashboardController = new dashboardController();
-	$dashboardController->getBlogPosts();
+	// include_once('controller/dashboardController.php');
+
+	// $dashboardController = new dashboardController();
+	// $dashboardController->getBlogPosts();
+
+	session_start();
+
+
 ?>
 
 <!-- <html>
@@ -62,23 +68,59 @@
 					<div class="main col-md-12 article-post" >
 						<center>
 
+							<?php 
 
-							<article class="mini-post">
-								<header>
-									<h3><a href="#">This is a very long blog title idk anymore mang</a></h3>
-									<time style="text-align: left; font-size: 8px; padding-top: 6px;"class="published" datetime="2015-10-20">October 20, 2015</time>
-									<p class="text-snippet" style="">Spicy jalapeno pork belly burgdoggen pastrami, hasflkdjlaskfj alsdfjklaskjflasdjf laskdjflakjfla;sjfam hock shankle turducken bresaola, burgdoggen filet mignon buffalo swine ball tip short ribs.</p>
-									<p class="read-more"><a>Read More ›</a></p>
-								</header>
-								<div class="img__wrap">
-									<a href="#" class="image"><img class="img__img" src="https://images.pexels.com/photos/925682/pexels-photo-925682.png?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="" /></a>
-									<div class="img__description">
-										<a href="#" class="author"><img src="https://images.pexels.com/photos/235444/pexels-photo-235444.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="" /><p>Coleen Bartido</p></a>
-									</div>
-								</div>
-							</article>
+							require 'vendor/autoload.php'; 
 
-							<article class="mini-post">
+							$connection = new MongoDB\Client("mongodb://localhost:27017");
+
+							$db = $connection->bloog;
+        					$userCollection = $db->users;
+        					$postCollection = $db->posts;
+
+        					$userID = $_SESSION['userID'];
+
+        					$userQuery = array("_id" => $_SESSION['userID']);
+    						$query = array("userID" => $userID);
+        					$options = ['sort' => ['timestamp' => -1]];
+
+        					$user = $userCollection->findOne($userQuery);
+
+        					$following = $user['following'];
+        					var_dump($following);
+        					echo $following->username;
+
+    						$posts = $postCollection->find($query);
+
+    						foreach($posts as $post)
+    						{
+
+    						echo '<article class="mini-post">';
+								echo '<header>';
+									echo'<h3><a href="#">' . $post['title'] . '</a></h3>';
+									echo '<time style="text-align: left; font-size: 8px; padding-top: 6px;"class="published" datetime="2015-10-20">' . $post['timestamp'] . '</time>';
+									echo '<p class="text-snippet" style=""> '.$post['post'] . '</p>
+									<p class="read-more"><a>Read More ›</a></p>';
+								echo '</header>';
+								echo '<div class="img__wrap">';
+									echo '<a href="#" class="image"><img class="img__img" src="https://images.pexels.com/photos/925682/pexels-photo-925682.png?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="" /></a>';
+									echo '<div class="img__description">';
+										echo '<a href="#" class="author"><img src="https://images.pexels.com/photos/235444/pexels-photo-235444.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="" /><p>' .$post['username'] . '</p></a>';
+									echo '</div>';
+								echo '</div>';
+							echo '</article>';
+							}
+
+    						//$posts = $posts->toArray();
+    						//echo $posts;
+
+							//foreach ($posts as $post) { 
+
+							?>
+							
+							<!--  -->
+
+							<!-- <article class="mini-post">
 								<header>
 									<h3><a href="#">Vitae sed condimentum</a></h3>
 									<time style="text-align: left; font-size: 8px; padding-top: 6px;"class="published" datetime="2015-10-20">October 20, 2015</time>
@@ -122,10 +164,11 @@
 									<a href="#" class="image"><img class="img__img" src="https://images.pexels.com/photos/753994/pexels-photo-753994.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="" /></a>
 									<div class="img__description">
 										<a href="#" class="author"><img src="https://images.pexels.com/photos/343717/pexels-photo-343717.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt=""/><p>Juan Dela Cruz is a long name</p></a>
-										<!--a href="#" class="button small">Follow</a-->
+										
 									</div>
 								</div>
-							</article>
+							</article> -->
+							<!--a href="#" class="button small">Follow</a-->
 
 
 

@@ -40,9 +40,9 @@ class UserAccount {
 				)
 		);
 
-		var_dump($userAccount);
+		//var_dump($userAccount);
 
-		//return $userAccount;
+		return $userAccount;
     }
 
     public function registerUser($username, $email, $password)
@@ -91,9 +91,29 @@ class UserAccount {
     public function getFollowing($objectID, $email)
     {
     	$db = $connection->bloog;
-		$collection = $db->Users;
+		$collection = $db->users;
 
 		$followingList = $collection->find();
+
+        
+    }
+
+    public function followUser($followID)
+    {
+        $db = $connection->bloog;
+        $collection = $db->users;
+
+        //update two users
+
+        $userID = $_SESSION['userID'];
+        $followingQuery = array("_id" => $userID);
+        $followingUpdate = array('$push' => array('following.$.id' => $followID)));
+
+        $collection->update($followingQuery, $followingUpdate);
+
+        $followerQuery = array("_id" => $followID);
+        $followerUpdate = array('$push' => array('follower.$.id' => $followID)));
+
     }
 }
 

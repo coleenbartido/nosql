@@ -5,7 +5,7 @@
   </head>
   <body>
 
-  	<form action="" method="GET">
+  	<form action="../controller/dashboardController.php" method="POST">
   		<input type='hidden' name="functionCall" value="create" />  
   	
     	<div id="editor">

@@ -1,7 +1,9 @@
 <?php
 
-	
 	include_once("../model/UserAccount.php");
+	include_once("../model/BlogPost.php");
+
+	//include_once("../controller/dashboardController.php");
 	
 	session_start();
 
@@ -9,12 +11,20 @@
 	$loginController->verifyUser();
 
 	class loginController{
-		
+
 		public $userModel;
+		public $postModel;
+
+		//public $dboardController;
+		
 
 		public function __construct()  
     	{	  
+
         	$this->userModel = new UserAccount();
+        	$this->postModel = new BlogPost();
+
+        	//$this->dboardController = new dashboardController();
 
     	} 
 
@@ -25,17 +35,21 @@
 
     		$user = $this->userModel->getUser($email, $password);
 
-    		var_dump(json_encode($user));
-
     		if($user != NULL)
     		{
-    			//$_SESSION['user'] = $email;
-				//include '../view/dashboard.php';
-				echo "yes HERE I AM IN VERIFY USER";
+    			$_SESSION['userID'] = $user->_id;
+    			$_SESSION['username'] = $user->username;
+					
+				//header("Location: dashboardController.php");
+				header("Location: dashboard.php");
+				exit();
+
+    			//include '../view/dashboard.php';
+
     		} 
     		else
     		{
-    			echo "please HERE I AM IN VERIFY USER";
+    			echo "Account does not exist.";
     		}
 
     		

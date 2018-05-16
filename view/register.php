@@ -16,8 +16,8 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 		<!---->
-    <link rel="icon" href="assets/bloog-logo.png" type="image/gif" sizes="16x16">
-    <link rel="stylesheet" href="assets/css/login.css"/>
+    <link rel="icon" href="../assets/bloog-logo.png" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" href="../assets/css/login.css"/>
 
 		<title>Bloog Register</title>
 	</head>
@@ -37,19 +37,19 @@
 					</ol>
 					<div class="carousel-inner">
 						<div class="carousel-item active">
-							<img class="d-block" src="assets/bloog-post.png">
+							<img class="d-block" src="../assets/bloog-post.png">
 							<div class="carousel-caption d-none d-md-block">
 							 <!--p class="post">Follow your interests</p-->
 							</div>
 						</div>
 						<div class="carousel-item">
-							<img class="d-block" src="assets/bloog-connect.png">
+							<img class="d-block" src="../assets/bloog-connect.png">
 							<div class="carousel-caption d-none d-md-block">
 							 <!--p class="connect">Connect with other people</p-->
 							</div>
 						</div>
 						<div class="carousel-item">
-							<img class="d-block " src="assets/bloog-share-ideas.png">
+							<img class="d-block " src="../assets/bloog-share-ideas.png">
 							<div class="carousel-caption d-none d-md-block">
 							 <!--p class="share">Share your ideas</p-->
 							</div>
@@ -81,13 +81,7 @@
 					<div class="form-group">
 						<label for="exampleInputPassword1">Confirm Password</label>
 						<input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required="required" placeholder="Confirm Password">
-						<a class="forgot-pass" href="#">Forgot Password?</a>
 					</div>
-
-					<!--div class="form-group form-check">
-						<input type="checkbox" class="form-check-input" id="exampleCheck1">
-						<label class="form-check-label" for="exampleCheck1">Check me out</label>
-					</div-->
 					
 					<button type="submit" class="btn btn-secondary">Register</button>
 				</form>

@@ -2,7 +2,7 @@
 
 	include_once("../model/UserAccount.php");
 	
-	session_start();
+	//session_start();
 
 	$registerController = new registerController();
 	$registerController->registerUser();
@@ -29,7 +29,8 @@
 
     		if($isValid)
     		{
-    			include '../index.php';
+    			//header("Location: https://www.facebook.com");
+    			//exit();
     		}
     		else
     		{
