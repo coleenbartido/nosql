@@ -3488,6 +3488,13 @@ body {
   left: 0;
 }
 
+.mini-post:hover{
+	box-shadow: 0px 4px 8px rgba(188,188,188,0.9);
+	-webkit-transition: box-shadow 0.5s ease-out;
+  -moz-transition: box-shadow 0.5s ease-out;
+  -o-transition: box-shadow 0.5s ease-out;
+  transition: box-shadow 0.5s ease-out;
+}
 
 .mini-post h3{
 	text-align:left;
@@ -3505,10 +3512,14 @@ body {
 }
 
 .mini-post .read-more {
-	cursor: pointer;
-	text-decoration: none !important;
+
 	color: #17a2b8;
 	margin-bottom: 0px;
+}
+
+.mini-post .read-more a{
+	cursor: pointer;
+	text-decoration: none !important;
 }
 
 /* mini-post */
@@ -3580,11 +3591,13 @@ body {
 	line-height: 20px;
 	width:258px;
 	overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
 	text-overflow: ellipsis;
-	overflow: hidden;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+	hyphens: auto;
 }
 
 
@@ -3601,7 +3614,7 @@ body {
   left: 0;
   right: 0;
   background: rgba(254,254,254, 0.4);
-	box-shadow: 0 1px 5px rgba(0,0,0,0.5);
+	/*box-shadow: 0 1px 5px rgba(0,0,0,0.5);*/
   color: #fff;
   visibility: hidden;
   opacity: 0;
