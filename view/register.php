@@ -1,10 +1,5 @@
 <?php
 	
-	session_start();
-	if(isset($_SESSION['user'])){
-        header("location: dashboard.php");
-        exit();
-    }
 	
 ?>
 
@@ -24,7 +19,7 @@
     <link rel="icon" href="assets/bloog-logo.png" type="image/gif" sizes="16x16">
     <link rel="stylesheet" href="assets/css/login.css"/>
 
-		<title>Bloog Login</title>
+		<title>Bloog Register</title>
 	</head>
 
 
@@ -61,7 +56,7 @@
 						</div>
 					</div>
 				</div>
-				<!---END OF CAROUSEL--->
+				<!---END OF CAROUSEL-->
 			</div>
 
 
@@ -70,7 +65,11 @@
 					<h1 class="bloog-title">Bloog</h1>
 				</div>
 
-				<form class="login" action="controller/loginController.php" method="POST">
+				<form class="login" action="../controller/registerController.php" method="POST">
+					<div class="form-group">
+						<label for="inputUsername">Username</label>
+						<input type="text" class="form-control" id="inputUsername" name="inputUsername" required="required" placeholder="Username">
+					</div>
 					<div class="form-group">
 						<label for="inputEmail">Email</label>
 						<input type="email" class="form-control" id="inputEmail" name="inputEmail" required="required" placeholder="Email Address">
@@ -78,6 +77,10 @@
 					<div class="form-group">
 						<label for="exampleInputPassword1">Password</label>
 						<input type="password" class="form-control" id="inputPassword" name="inputPassword" required="required" placeholder="Password">
+					</div>
+					<div class="form-group">
+						<label for="exampleInputPassword1">Confirm Password</label>
+						<input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required="required" placeholder="Confirm Password">
 						<a class="forgot-pass" href="#">Forgot Password?</a>
 					</div>
 
@@ -85,8 +88,8 @@
 						<input type="checkbox" class="form-check-input" id="exampleCheck1">
 						<label class="form-check-label" for="exampleCheck1">Check me out</label>
 					</div-->
-					<button type="submit" class="btn btn-primary" value="Submit">Login</button>
-					<button type="submit" class="btn btn-secondary" onClick="document.location.href = 'view/register.php'">Register</button>
+					
+					<button type="submit" class="btn btn-secondary">Register</button>
 				</form>
 
 

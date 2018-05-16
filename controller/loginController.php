@@ -1,65 +1,81 @@
 <?php
 
-	require '../vendor/autoload.php'; //Load the library for Mongodb
+	
+	include_once("../model/UserAccount.php");
+	
+	session_start();
 
-	$connection = new MongoDB\Client("mongodb://localhost:27017");
-	$db = $connection->bloog;
-	$collection = $db->Users;
+	$loginController = new loginController();
+	$loginController->verifyUser();
 
-	$email = $_POST['inputEmail'];
+	class loginController{
+		
+		public $userModel;
 
-	$password = $_POST['inputPassword'];
-	//echo $password;
+		public function __construct()  
+    	{	  
+        	$this->userModel = new UserAccount();
+
+    	} 
+
+    	public function verifyUser()
+    	{
+    		$email = $_POST['inputEmail'];
+    		$password = $_POST['inputPassword'];
+
+    		$user = $this->userModel->getUser($email, $password);
+
+    		var_dump(json_encode($user));
+
+    		if($user != NULL)
+    		{
+    			//$_SESSION['user'] = $email;
+				//include '../view/dashboard.php';
+				echo "yes HERE I AM IN VERIFY USER";
+    		} 
+    		else
+    		{
+    			echo "please HERE I AM IN VERIFY USER";
+    		}
+
+    		
+    	}
+
+   }
+	
 
 
-	$userAccount = $collection->findOne(
-    array(
-        'Email' => $email,
-        'Password' => $password 
-      )
-    );
+	// $userAccount = $collection->findOne(
+ 	//    array(
+ 	//        'Email' => $email,
+ 	//        'Password' => $password 
+ 	//      )
+ 	//    );
 
- //    $userAccount = $collection->find(
+ //    $userAccount = $collection->findOne(
  //    	array(
  //    		'$or' => array(
- //  				array( 
- //  					'$and' => array(
- //        				'Email' => $email,
- //        				'Password' => $password 
- //        			)
- //      			),
- //  				array( 
- //  					'$and' => array(
- //        				'Username' => $email,
- //        				'Password' => $password 
- //        			)
- //      			),
+ //    			0 =>
+ //  				array( 'Email' => $email, 'Password' => $password),
+ //  				1 =>
+ //  				array('Username' => $email, 'Password' => $password),
 	// 		)
 	// 	)
 	// );
 
-	//$filter = ['$or' => [['Email' => $email, 'Password'=> $password], ['Username' => $email, 'Password'=> $password]]];
-
-	if($userAccount != NULL)
-	{
-		var_dump($userAccount);
-	}
-	else 
-	{
-		echo "PSIKE";
-	}
 
 	
-
-
 	// if($userAccount != NULL)
 	// {
-	// 	header("location: ../test.php");
+	// 	header("location: ../dashboard.php");
 	// } 
 	// else
 	// {
 	// 	header("location: ../testtest.php");
 	// }
   
+	// }
+
+	
 
 ?>
