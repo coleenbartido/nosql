@@ -5,7 +5,7 @@
 
     <title>Write Post | Bloog</title>
 
-    <!---QUILL TEXT EDITOR--->
+    <!--QUILL TEXT EDITOR-->
     <link href="https://cdn.quilljs.com/1.3.4/quill.snow.css" rel="stylesheet">
     <script src="https://cdn.quilljs.com/1.3.4/quill.js"></script>
 
