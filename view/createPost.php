@@ -102,6 +102,8 @@
     		console.log(quill.root.innerHTML);  //save to DB kasi ito yung i-lload sa single page.
         console.log("***contents***");
     		console.log(quill.getContents())    //save to DB kasi later on ito yung i-s-setContents() pag edit mode na.
+        console.log("***setContents***")
+    		console.log(quill.getText())
   		}
 
 	</script>
