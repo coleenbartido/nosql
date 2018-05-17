@@ -41,7 +41,7 @@
     			$_SESSION['username'] = $user->username;
 					
 				//header("Location: dashboardController.php");
-				header("Location: dashboard.php");
+				header("Location: ../dashboard.php");
 				exit();
 
     			//include '../view/dashboard.php';

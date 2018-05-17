@@ -27,10 +27,11 @@
 				echo "Function call does not exist";
 				break;
 		}
-	}
+	} 
 	else
 	{
-		$blogController->getPosts();
+		header("Location: ../dashboard.php");
+		exit();
 	}
 	
 	
@@ -47,20 +48,6 @@
 
 		public function getPosts()
 		{
-			// $userID = $_SESSION['userID'];
-			// //$userID = "5afab29e8739043783b3e293";
-			// $posts = $this->postModel->getPosts($userID);
-			// $posts = $posts->toArray();
-			
-			// //include '../view/dashboard.php';
-			
-			// $_SESSION['posts'] = $posts;
-
-			// echo "POSTS HERE<br><br><br><br><br>";
-			// //var_dump($posts);
-
-			// header('Location: ../dashboard.php');
-			// exit();
 
 		}
 

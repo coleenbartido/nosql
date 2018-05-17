@@ -107,12 +107,12 @@ class UserAccount {
 
         $userID = $_SESSION['userID'];
         $followingQuery = array("_id" => $userID);
-        $followingUpdate = array('$push' => array('following.$.id' => $followID)));
+        $followingUpdate = array('$push' => array('following.$.id' => $followID));
 
         $collection->update($followingQuery, $followingUpdate);
 
         $followerQuery = array("_id" => $followID);
-        $followerUpdate = array('$push' => array('follower.$.id' => $followID)));
+        $followerUpdate = array('$push' => array('followers.$.id' => $followID));
 
     }
 }
