@@ -1,7 +1,7 @@
 <?php
 
 	include_once("../model/UserAccount.php");
-	
+
 	//session_start();
 
 	$registerController = new registerController();
@@ -11,20 +11,21 @@
 	{
 		public $userModel;
 
-		public function __construct()  
-    	{	  
+		public function __construct()
+    	{
         	$this->userModel = new UserAccount();
 
-    	} 
+    	}
 
     	public function registerUser()
     	{
 
     		$username = $_POST['inputUsername'];
+				//$name = $_POST['inputName'];
     		$email = $_POST['inputEmail'];
     		$password = $_POST['inputPassword'];
 
-    		
+
     		$isValid = $this->userModel->registerUser($username, $email, $password);
 
     		if($isValid)
@@ -36,9 +37,9 @@
     		{
     			echo "Something went wrong";
     		}
-    		
 
-    		
+
+
 
     		//var_dump(json_encode($user));
 
@@ -47,13 +48,13 @@
     // 			//$_SESSION['user'] = $email;
 				// //include '../view/dashboard.php';
 				// echo "yes";
-    // 		} 
+    // 		}
     // 		else
     // 		{
     // 			echo "bitch please";
     // 		}
 
-    		
+
     	}
 	}
 ?>
