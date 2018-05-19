@@ -2,8 +2,17 @@
 	
 	include("../model/BlogPost.php");
 
-	session_start();
+	// if(!isset($_SESSION)) 
+ //    { 
+ //        session_start(); 
+ //    }
+ //    else
+ //    {
+ //        session_destroy();
+ //        session_start(); 
+ //    }
 
+	session_start();
 
 	$blogController = new dashboardController();
 
@@ -30,8 +39,9 @@
 	} 
 	else
 	{
-		header("Location: ../dashboard.php");
-		exit();
+			header("Location: ../dashboard.php");
+			exit();
+		
 	}
 	
 	
@@ -53,7 +63,12 @@
 
 		public function createBlogPost()
 		{
-			$this->postModel->createBlogPost();
+
+			
+			$title = $_POST['article-title'];
+			$text = $_POST['qText'];
+			
+			$this->postModel->createBlogPost($title, $text);
 
 			header('Location: ../dashboard.php');
 			exit();
@@ -81,6 +96,16 @@
 			header('Location: ../dashboard.php');
 			exit();
 
+		}
+
+		public function search()
+		{
+			$searchQuery = $_GET['searchTerm'];
+
+			$this->model->search();
+
+			header('Location: ../search.php?searchTerm=' . $searchQuery);
+			exit;
 		}
 
 		public function logout()

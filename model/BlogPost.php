@@ -71,14 +71,14 @@ class BlogPost {
     }
 
 
-    public function createBlogPost()
+    public function createBlogPost($title, $qText)
     {
     	try {
 
     		$db = $this->connection->bloog;
     		$collection = $db->posts;
 
-    		$postDocument = array("title" => "Blog Post 3", "post" => "Blog Post 3", "userID"=> $_SESSION['userID'], "timestamp" => new \MongoDB\BSON\UTCDateTime(), "username" => $_SESSION['username']);
+    		$postDocument = array("title" => $title, "post" => $qText, "userID"=> $_SESSION['userID'], "timestamp" => new \MongoDB\BSON\UTCDateTime(), "username" => $_SESSION['username']);
 
     		$collection->insertOne($postDocument);
     		return true;

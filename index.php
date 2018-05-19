@@ -1,14 +1,15 @@
 <?php
-
-	//require_once __WEBROOT__ . '/includes/safestring.class.php';
+	
+	//require_once __WEBROOT__ . '/includes/safestring.class.php'; 
 	session_start();
-
+	
 	if(isset($_SESSION['userID'])){
         header("Location: dashboard.php");
         exit();
     }
-
+	
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -62,7 +63,7 @@
 						</div>
 					</div>
 				</div>
-				<!---END OF CAROUSEL--->
+				<!--END OF CAROUSEL-->
 			</div>
 
 

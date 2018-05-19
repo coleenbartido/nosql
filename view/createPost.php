@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" href="https://i.icomoon.io/public/temp/4045dc6036/UntitledProject/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
   </head>
 <body>
 
@@ -46,36 +46,28 @@
 
 
   <div class="container col col-md-7 col" style="border: 1px solid red;">
-    <!-- <h3> Write a post </h3> -->
-    <div class="form-group">
-      <label for="article-title">Article Title</label>
-      <input type="text" class="form-control" id="article-title" name="article-title" required="required" placeholder="">
-    </div>
 
     <label for="article-text">Article Text</label>
-    <form id="article-title" name="article-title" style="width: 100%; background-color: #fefefe; margin: 0 auto;"  action="../controller/dashboardController.php" method="POST">
-  		<input type='hidden' name="functionCall" value="create" />
+    <form id="form" name="form" style="width: 100%; background-color: #fefefe; margin: 0 auto;"  action="../controller/dashboardController.php" method="POST">
+  		<label for="article-title">Article Title</label>
+      <input type="text" class="form-control" id="article-title" name="article-title" required="required" placeholder="">
 
-      // added this block
+      <input type='hidden' name="functionCall" value="create" />
+
+      <!-- // added this block -->
       <input type='hidden' name="quillInnerHTML" id="quillInnerHTML" value="" />
       <input type='hidden' name="quillContents" id="quillContents" value="" />
       <input type='hidden' name="quillText" id="quillText" value="" />
-      // end block
-
+      <!-- // end block -->
 
     	<div id="editor">
 
     	</div>
     	<button type="submit" value="submit">Submit</button>
-    	<button onclick="logHtmlContent()">Log content as HTML</button>
+    	<!-- <button onclick="logHtmlContent()">Log content as HTML</button> -->
     	<!-- <button onclick=""> -->
       </form>
   </div>
-
-  <button type="submit" value="submit" onclick="logHtmlContent()">yoko na</button>
-
-  // added this button
-  <button onclick="createBlogPost()">kaya pa</button>
 
 
 
@@ -102,7 +94,8 @@
   			},
     		theme: 'snow'
   		});
-  		function logHtmlContent() {
+  		
+      function logHtmlContent() {
         console.log("***innerHTML***")
     		console.log(quill.root.innerHTML);  //save to DB kasi ito yung i-lload sa single page.
         console.log("***getContents***");
@@ -111,35 +104,20 @@
     		console.log(quill.getText())
   		}
 
-      //added this block
-      function createBlogPost() {
+       var form = document.querySelector('form');
+       form.onsubmit = function()
+       {
+         var quillInnerHTML = document.querySelector('inputname=quillInnerHTML]');
+         quill.value = quill.root.innerHTML;
 
-        var xhr = new XMLHttpRequest();
+         var qContent = document.querySelector('inputname=qContent]');
+         qContent.value = JSON.stringify(quill.getContents());
 
-        //Send the proper header information along with the request
-        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+         var qText = document.querySelector('input[name=quillText]');
+         qText.value = quill.getText();
 
-        //Call a function when the state changes
-        xhr.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
+       };
 
-                // Request finished. Do processing here
-
-                var qContent = document.getElementById('quillContents');
-                qContent.value = JSON.stringify(quill.getContents());
-
-                var qInnerHTML = document.getElementById('quillInnerHTML');
-                qInnerHTML.value = quill.root.innerHTML;
-
-                var qText = document.getElementById('quillText');
-                qText.value = quill.getText();
-            }
-        };
-
-        xhr.open("POST", "dashboardController.php", true);
-        xhr.send();
-      }
-      //end block
 	</script>
 
   </body>
