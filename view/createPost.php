@@ -56,6 +56,12 @@
     <form id="article-title" name="article-title" style="width: 100%; background-color: #fefefe; margin: 0 auto;"  action="../controller/dashboardController.php" method="POST">
   		<input type='hidden' name="functionCall" value="create" />
 
+      // added this block
+      <input type='hidden' name="quillInnerHTML" id="quillInnerHTML" value="" />
+      <input type='hidden' name="quillContents" id="quillContents" value="" />
+      <input type='hidden' name="quillText" id="quillText" value="" />
+      // end block
+
 
     	<div id="editor">
 
@@ -68,6 +74,9 @@
 
   <button type="submit" value="submit" onclick="logHtmlContent()">yoko na</button>
 
+  // added this button
+  <button onclick="createBlogPost()">kaya pa</button>
+
 
 
 
@@ -75,7 +84,6 @@
 
    <script>
    		var toolbarOptions = [
-
         //[{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
         [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
         [{ 'font': [] }],
@@ -88,24 +96,50 @@
         // [{ 'header': 1 }, { 'header': 2 }],               // custom button values
   			['blockquote', 'code-block'],
 		];
-
   		var quill = new Quill('#editor', {
-
   			modules: {
     			toolbar: toolbarOptions
   			},
     		theme: 'snow'
   		});
-
   		function logHtmlContent() {
         console.log("***innerHTML***")
     		console.log(quill.root.innerHTML);  //save to DB kasi ito yung i-lload sa single page.
-        console.log("***contents***");
+        console.log("***getContents***");
     		console.log(quill.getContents())    //save to DB kasi later on ito yung i-s-setContents() pag edit mode na.
         console.log("***setContents***")
     		console.log(quill.getText())
   		}
 
+      //added this block
+      function createBlogPost() {
+
+        var xhr = new XMLHttpRequest();
+
+        //Send the proper header information along with the request
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+        //Call a function when the state changes
+        xhr.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+
+                // Request finished. Do processing here
+
+                var qContent = document.getElementById('quillContents');
+                qContent.value = JSON.stringify(quill.getContents());
+
+                var qInnerHTML = document.getElementById('quillInnerHTML');
+                qInnerHTML.value = quill.root.innerHTML;
+
+                var qText = document.getElementById('quillText');
+                qText.value = quill.getText();
+            }
+        };
+
+        xhr.open("POST", "dashboardController.php", true);
+        xhr.send();
+      }
+      //end block
 	</script>
 
   </body>
