@@ -46,13 +46,13 @@
 						<nav class="links">
 							<ul>
 								<li><a href="#"><span class="icon-home2"></span>Home</a></li>
-								<li><a href="#"><span class="icon-pencil"></span>Write Post</a></li>
+								<li><a href="view/createPost.php"><span class="icon-pencil"></span>Write Post</a></li>
 							</ul>
 						</nav>
 						<nav class="main">
 							<ul>
 								<li class="search">
-									<a class="fa-search" href="#search">Search</a>
+									<a class="fa-search" href="view/search.php?searchTerm='blog'">Search</a>
 									<form id="search" method="get" action="#">
 										<input type="text" name="query" placeholder="Search" />
 									</form>
@@ -91,24 +91,21 @@
         					$userID = $_SESSION['userID'];
 
         					$userQuery = array("_id" => $userID);
-    						$query = array("userID" => strval($userID));
+    						$query = array("userID" => $userID);
         					$options = ['sort' => ['timestamp' => -1]];
 
-        					$user = $userCollection->findOne($userQuery);
-        					$following = $user['following'];
-
         					$posts = $postCollection->find($query)->toArray();
-        					//$userPosts = json_encode($userPosts);
-        					//$posts = json_decode($userPosts, true);
 
-        					//var_dump($userPosts);
+        					$user = $userCollection->findOne($userQuery);
+        					$following = [];
 
-        					//$posts = [];
-        					
-        					foreach($following as $follow)
+        					if(isset($user['following']))
         					{
-        						$query = array("username" => strval($follow->username));
-        						$followingPosts = $postCollection->find($query)->toArray();
+        						$following = $user['following'];
+        						foreach($following as $follow)
+        						{
+        							$query = array("username" => strval($follow->username));
+        							$followingPosts = $postCollection->find($query)->toArray();
         						//$followingPosts = json_encode($followingPosts);
         						//var_dump($followingPosts);
 
@@ -123,10 +120,18 @@
 
         						// }
 
-        						$posts = array_merge($posts, $followingPosts);
+        							$posts = array_merge($posts, $followingPosts);
         						
+        						}
         					}
 
+        					
+        					
+        					
+
+        					rsort($posts);
+
+        					//var_dump($posts);
 
 
     						if($posts == NULL)
@@ -233,7 +238,7 @@
 			</div>
 
 			<div class="footer">
-				Insert footer here. Huhuhuhuhu ayoko na suko na ko <strong>bye world</strong>.
+				Insert footer here. <strong>bye world</strong>.
 			</div>
 
 
@@ -244,7 +249,7 @@
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
 
-			<!-- Bootstrap 4--->
+			<!-- Bootstrap 4-->
 			<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

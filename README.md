@@ -1,2 +1,0 @@
-# nosql
-Project for NoSQL
