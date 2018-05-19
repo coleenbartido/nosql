@@ -65,7 +65,7 @@ display: none;
   text-align: center;
   color: #4f6da9;
   margin: 0 auto;
-  margin-top: 25%;
+  margin-top: 20%;
   webkit-trasition: all .4s ease;
   transition: all .4s ease;
 
@@ -103,13 +103,11 @@ display: none;
   width: 60%;
   height: 100%;
   margin:0 auto;
-  margin-top: 10%;
+  margin-top: 15%;
   min-width: 250px;
 
   /*width: 400px;*/
 }
-
-
 
 
 .form-group{
@@ -234,7 +232,6 @@ input[type=email]:visited, input[type=password]:visited{
 }
 
 .register p{
-  margin: 0 auto;
   text-align: center;
 }
 
@@ -247,14 +244,23 @@ input[type=email]:visited, input[type=password]:visited{
 
 }
 
+.register p{
+  color: #4f6da9;
+}
+
 .buttons .register-button{
   display:inline-block;
-  color: #3e5069;
+  color: #8b9db5!important;
   letter-spacing: 1px;
   font-family: 'Playfair';
   padding-left: 0px;
   padding-right: 0px;
+  cursor: pointer;
+}
 
+.buttons .register-button:hover{
+  color: #3e5069 !important;
+  text-decoration: none !important;
 }
 
 .btn:focus,.btn:active:focus,.btn.active:focus,

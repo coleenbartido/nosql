@@ -1,13 +1,13 @@
 <?php
-	
-	//require_once __WEBROOT__ . '/includes/safestring.class.php'; 
+
+	//require_once __WEBROOT__ . '/includes/safestring.class.php';
 	session_start();
-	
+
 	if(isset($_SESSION['userID'])){
         header("Location: dashboard.php");
         exit();
     }
-	
+
 ?>
 
 <!DOCTYPE html>
@@ -34,9 +34,9 @@
 	<div class="container col-12">
 		<div class="row">
 
-			<div class="left col-5">
+			<div class="left col-6">
 				<!---CAROUSEL-->
-				<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+				<!--div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 					<ol class="carousel-indicators">
 						<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
 						<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -47,35 +47,39 @@
 							<img class="d-block" src="assets/bloog-post.png">
 							<div class="carousel-caption d-none d-md-block">
 							 <!--p class="post">Follow your interests</p-->
-							</div>
+							<!--/div>
 						</div>
 						<div class="carousel-item">
 							<img class="d-block" src="assets/bloog-connect.png">
 							<div class="carousel-caption d-none d-md-block">
 							 <!--p class="connect">Connect with other people</p-->
-							</div>
+							<!--/div>
 						</div>
 						<div class="carousel-item">
 							<img class="d-block " src="assets/bloog-share-ideas.png">
 							<div class="carousel-caption d-none d-md-block">
 							 <!--p class="share">Share your ideas</p-->
-							</div>
+							<!--/div>
 						</div>
 					</div>
 				</div>
-				<!--END OF CAROUSEL-->
+				<!---END OF CAROUSEL--->
+        <!-- <h1>BLOOG</h1>
+        <h2>MINIMALIST BLOGGING PLATFORM</h2> -->
 			</div>
 
 
-			<div class="right col-7">
+			<div class="right col-6">
 				<div class="title">
-					<h1 class="bloog-title">Bloog</h1>
+					<h1 class="bloog-title">BLOOG</h1>
+          <p>MINIMALIST BLOGGING PLATFORM</p>
+          <!-- <img src="assets/logo.png"/> -->
 				</div>
 
-				<form class="login" action="controller/loginController.php" method="POST">
+				<form class="login-form col-sm-12 col-md-12" action="controller/loginController.php" method="POST">
 					<div class="form-group">
-						<label for="inputEmail">Email or Username</label>
-						<input type="text" class="form-control" id="inputEmail" name="inputEmail" required="required" placeholder="Email Address">
+						<label for="inputEmail">Email address or username</label>
+						<input type="email" class="form-control" id="inputEmail" name="inputEmail" required="required" placeholder="johndoe@bloog.com">
 					</div>
 					<div class="form-group">
 						<label for="exampleInputPassword1">Password</label>
@@ -83,12 +87,15 @@
 						<a class="forgot-pass" href="#">Forgot Password?</a>
 					</div>
 
-					<!--div class="form-group form-check">
-						<input type="checkbox" class="form-check-input" id="exampleCheck1">
-						<label class="form-check-label" for="exampleCheck1">Check me out</label>
-					</div-->
-					<button type="submit" class="btn btn-primary" value="Submit">Login</button>
-					<button class="btn btn-secondary" onClick="document.location.href = 'view/register.php'">Register</button>
+          <div class="buttons col-md-12">
+  					<button type="submit" class="btn btn-primary" value="Submit">Login</button>
+          <div>
+
+          <div class="register col-md-12">
+          <p>Don't have an account yet?
+            <a class="register-button" onClick="document.location.href = 'view/register.php'">Sign up.</a>
+          </p>
+          </div>
 				</form>
 
 
