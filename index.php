@@ -74,8 +74,8 @@
 
 				<form class="login" action="controller/loginController.php" method="POST">
 					<div class="form-group">
-						<label for="inputEmail">Email</label>
-						<input type="email" class="form-control" id="inputEmail" name="inputEmail" required="required" placeholder="Email Address">
+						<label for="inputEmail">Email or Username</label>
+						<input type="text" class="form-control" id="inputEmail" name="inputEmail" required="required" placeholder="Email Address">
 					</div>
 					<div class="form-group">
 						<label for="exampleInputPassword1">Password</label>
@@ -88,7 +88,7 @@
 						<label class="form-check-label" for="exampleCheck1">Check me out</label>
 					</div-->
 					<button type="submit" class="btn btn-primary" value="Submit">Login</button>
-					<button type="submit" class="btn btn-secondary" onClick="document.location.href = 'view/register.php'">Register</button>
+					<button class="btn btn-secondary" onClick="document.location.href = 'view/register.php'">Register</button>
 				</form>
 
 

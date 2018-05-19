@@ -38,7 +38,8 @@
     			echo "Something went wrong";
     		}
     		
-
+            header('Location: ../index.php');
+            exit();
     		
 
     		//var_dump(json_encode($user));

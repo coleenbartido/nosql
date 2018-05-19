@@ -94,23 +94,18 @@
     						$query = array("userID" => $userID);
         					$options = ['sort' => ['timestamp' => -1]];
 
-        					$user = $userCollection->findOne($userQuery);
-        					$following = $user['following'];
-
         					$posts = $postCollection->find($query)->toArray();
-        					//$userPosts = json_encode($userPosts);
-        					//$posts = json_decode($userPosts, true);
 
-        					//var_dump($userPosts);
+        					$user = $userCollection->findOne($userQuery);
+        					$following = [];
 
-        					//var_dump($posts);
-
-        					//$posts = [];
-        					
-        					foreach($following as $follow)
+        					if(isset($user['following']))
         					{
-        						$query = array("username" => strval($follow->username));
-        						$followingPosts = $postCollection->find($query)->toArray();
+        						$following = $user['following'];
+        						foreach($following as $follow)
+        						{
+        							$query = array("username" => strval($follow->username));
+        							$followingPosts = $postCollection->find($query)->toArray();
         						//$followingPosts = json_encode($followingPosts);
         						//var_dump($followingPosts);
 
@@ -125,9 +120,14 @@
 
         						// }
 
-        						$posts = array_merge($posts, $followingPosts);
+        							$posts = array_merge($posts, $followingPosts);
         						
+        						}
         					}
+
+        					
+        					
+        					
 
         					rsort($posts);
 
@@ -238,7 +238,7 @@
 			</div>
 
 			<div class="footer">
-				Insert footer here. Huhuhuhuhu ayoko na suko na ko <strong>bye world</strong>.
+				Insert footer here. <strong>bye world</strong>.
 			</div>
 
 

@@ -6,7 +6,7 @@
         exit();
     }
 
-	require 'vendor/autoload.php'; 
+	require '../vendor/autoload.php'; 
 
 	$connection = new MongoDB\Client("mongodb://localhost:27017");
 

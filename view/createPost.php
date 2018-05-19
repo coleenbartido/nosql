@@ -69,6 +69,7 @@
       </form>
   </div>
 
+  <button onclick="logHtmlContent()">Log content as HTML</button>
 
 
 
@@ -107,14 +108,15 @@
        var form = document.querySelector('form');
        form.onsubmit = function()
        {
-         var quillInnerHTML = document.querySelector('inputname=quillInnerHTML]');
+         var quillInnerHTML = document.querySelector('input[name=quillInnerHTML]');
          quill.value = quill.root.innerHTML;
 
-         var qContent = document.querySelector('inputname=qContent]');
+         var qContent = document.querySelector('input[name=qContent]');
          qContent.value = JSON.stringify(quill.getContents());
 
          var qText = document.querySelector('input[name=quillText]');
          qText.value = quill.getText();
+
 
        };
 

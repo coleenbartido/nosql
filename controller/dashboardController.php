@@ -66,7 +66,12 @@
 
 			
 			$title = $_POST['article-title'];
-			$text = $_POST['qText'];
+			$text = $_POST['quillText'];
+			// echo $text;
+			// $innerHTML = $_POST['quillInnerHTML'];
+			// echo $innerHTML;
+			// $contents = $_POST['quillContents'];
+			// echo $contents;
 			
 			$this->postModel->createBlogPost($title, $text);
 
