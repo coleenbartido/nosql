@@ -49,6 +49,7 @@ display: none;
   width: 100%;
   height: 100vh;
   background-color: #fefefe;
+  overflow-y: auto;
 
   /*width: 839px;*/
 }
@@ -57,22 +58,25 @@ display: none;
   width: 100%;
   height: auto;
   font-family: 'Playfair-Bold';
-  font-size: 10vh;
+  font-size: 15vh;
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
-  line-height: 75px;
+  line-height: 100px;
   text-align: center;
   color: #4f6da9;
   margin: 0 auto;
-  margin-top: 20%;
+  margin-top: 12%;
   webkit-trasition: all .4s ease;
   transition: all .4s ease;
 
   /*width: 285px;
   height: 187px;
   margin-top:10%;
-  text-shadow: 0 1px 2px #000000; */
+  text-shadow: 0 1px 2px #000000;
+
+  line-height: 75px;
+  margin-top: 20%;*/
 }
 
 .right .title p{
@@ -101,18 +105,20 @@ display: none;
 /*--FORM--*/
 .login-form{
   width: 60%;
-  height: 100%;
+  height: auto;
   margin:0 auto;
-  margin-top: 15%;
-  min-width: 250px;
+  margin-top: 10%;
+  min-width: 300px;
 
-  /*width: 400px;*/
+  /*width: 400px;
+  height: 100%;
+  margin-top: 15%;*/
 }
 
 
 .form-group{
-  margin-bottom: 14px;
-  width: 100%;
+  width: 80%;
+  margin: 0 auto 14px;
 }
 
 .form-group label{
@@ -123,12 +129,36 @@ display: none;
 
 .form-group input{
   width: 100%;
+  margin: 0 auto;
   height:auto;
   padding: 3%;
   border: 2px solid #7799C9;
   font-size: 14px;
 
   /*width: 400px;*/
+}
+
+.form-group input:hover{
+  border: 2px solid #37548E;
+  outline: none !important;
+}
+
+.form-group input:focus {
+    outline-color: transparent;
+    outline-style: none !important;
+    outline: none !important;
+    outline-style:none;
+    box-shadow:none;
+    border: 2px solid #37548E !important;
+}
+
+.form-group input:visited{
+  outline-color: transparent;
+  outline-style: none !important;
+  outline: none !important;
+  outline-style:none;
+  box-shadow:none;
+  border: 2px solid #37548E !important;
 }
 
 
@@ -228,7 +258,7 @@ input[type=email]:visited, input[type=password]:visited{
 }
 
 .register{
-  margin-top: 50%;
+  margin-top: 25%;
 }
 
 .register p{
@@ -241,7 +271,6 @@ input[type=email]:visited, input[type=password]:visited{
   background-color: #fefefe;
   border: none;
   font-size: 16px;
-
 }
 
 .register p{
@@ -314,6 +343,11 @@ input[type=email]:visited, input[type=password]:visited{
   background-color: #b2e6ec !important;
   color: #fefefe !important;
   border: 1px solid #00ADC2 !important;
+}
+
+/*Register Button - Register.php*/
+.btn-reg {
+  margin-bottom: 10%;
 }
 
 

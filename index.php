@@ -79,7 +79,7 @@
 				<form class="login-form col-sm-12 col-md-12" action="controller/loginController.php" method="POST">
 					<div class="form-group">
 						<label for="inputEmail">Email address or username</label>
-						<input type="email" class="form-control" id="inputEmail" name="inputEmail" required="required" placeholder="johndoe@bloog.com">
+						<input class="form-control" id="inputEmail" name="inputEmail" required="required" placeholder="johndoe@bloog.com"><!-- type="email" -->						
 					</div>
 					<div class="form-group">
 						<label for="exampleInputPassword1">Password</label>

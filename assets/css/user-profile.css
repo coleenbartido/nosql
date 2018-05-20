@@ -1,0 +1,93 @@
+.user-profile {
+  height: 215px;
+  border: 1px solid black;
+  margin: 1% auto;
+}
+
+.user-icon {
+  width: 160px;
+  height: 160px;
+  border: 1px solid black;
+  margin: 3% auto;
+  float: left;
+  position: relative;
+}
+
+.user-details {
+  height: 150px;
+  margin: 3% auto;
+  float: left;
+  position: relative;
+}
+
+.user-details h1 {
+  margin: 2% 0 0;
+  font-size: 25px;
+  line-height: 1;
+}
+
+
+.user-buttons {
+  height: 30px;
+  border: 1px solid black;
+  float: right;
+  margin: 3% auto;
+  position: relative;
+}
+
+.follower-count, .following-count {
+  height: 85px;
+  display: inline-block;
+  position: relative;
+  padding: 0;
+}
+
+.follower-count h3, .following-count h3 {
+  width: initial;
+  letter-spacing: 0;
+  margin: 0;
+  bottom: 0;
+  position: absolute;
+}
+
+.posts-feed {
+  height: auto;
+  margin: 1% auto;
+}
+
+.post-temp {
+  margin: 1% auto;
+  border: 1px solid black;
+  padding: 15px;
+}
+
+.details {
+  margin: auto 3%;
+  display: inline-block;
+  padding: 0;
+}
+
+.details h1 {
+  margin: 2% 0 0;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.user-icon-sm {
+  padding: 0;
+  display: inline-block;
+}
+
+.post-buttons {
+  width: 150px;
+  height: 30px;
+  border: 1px solid black;
+  padding: 0;
+  float: right;
+  position: relative;
+}
+
+.post-text {
+  border: 1px solid red;
+  margin: 0 20%;
+}

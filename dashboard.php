@@ -1,5 +1,5 @@
 <?php
-	
+
 
 	// include_once('controller/dashboardController.php');
 
@@ -34,6 +34,9 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 		<link rel="stylesheet" href="assets/css/main.css" />
 
+
+
+		<link rel="icon" href="assets/bloog-logo.png" type="image/gif" sizes="16x16">
 	</head>
 	<body>
 
@@ -58,7 +61,7 @@
 									</form>
 								</li>
 								<li class="dropdown">
-										<a href=""# class="account" >
+										<a href="profile.php" class="account" >
 										<img src="images/avatar.jpg" class="profile-circle"/>
 										</a>
 								</li>
@@ -73,9 +76,9 @@
 					<div class="main col-md-12 article-post" >
 						<center>
 
-							<?php 
+							<?php
 
-							require 'vendor/autoload.php'; 
+							require 'vendor/autoload.php';
 							//include('controller/dashboardController.php');
 							//include('model/BlogPost.php');
 
@@ -121,13 +124,13 @@
         						// }
 
         							$posts = array_merge($posts, $followingPosts);
-        						
+
         						}
         					}
 
-        					
-        					
-        					
+
+
+
 
         					rsort($posts);
 
@@ -137,13 +140,13 @@
     						if($posts == NULL)
     						{
     							echo "NO POSTS YET.";
-    						} 
+    						}
     						else
     						{
 
     							foreach($posts as $post)
     							{
-    								
+
 
     								$link = "view/viewPost.php?viewPost=". $post['_id'];
 
@@ -164,15 +167,15 @@
 								}
     						}
 
-    
+
 
     						//$posts = $posts->toArray();
     						//echo $posts;
 
-							//foreach ($posts as $post) { 
+							//foreach ($posts as $post) {
 
 							?>
-							
+
 							<!--  -->
 
 							<!-- <article class="mini-post">
@@ -219,7 +222,7 @@
 									<a href="#" class="image"><img class="img__img" src="https://images.pexels.com/photos/753994/pexels-photo-753994.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="" /></a>
 									<div class="img__description">
 										<a href="#" class="author"><img src="https://images.pexels.com/photos/343717/pexels-photo-343717.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt=""/><p>Juan Dela Cruz is a long name</p></a>
-										
+
 									</div>
 								</div>
 							</article> -->
