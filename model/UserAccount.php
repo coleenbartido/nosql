@@ -1,6 +1,6 @@
 <?php
 
-	require '../vendor/autoload.php'; //Load the library for Mongodb 
+	require '../vendor/autoload.php'; //Load the library for Mongodb
 
 class UserAccount {
 
@@ -9,16 +9,16 @@ class UserAccount {
 	public $password;
 
 	public $connection;
-	
 
-	// public function __construct($userID, $username, $password)  
- //    {  
+
+	// public function __construct($userID, $username, $password)
+ //    {
  //        $this->userID = $userID;
 	//     $this->username = $username;
 	//     $this->password = $password;
- //    } 
+ //    }
 
-	public function __construct() 
+	public function __construct()
 	{
 		$this->connection = new MongoDB\Client("mongodb://localhost:27017");
 	}
@@ -32,7 +32,7 @@ class UserAccount {
         $result = $collection->findOne(
             array(
                 'email' => $email,
-                'password' => $password 
+                'password' => $password
             )
         );
 
@@ -48,7 +48,7 @@ class UserAccount {
     		$db = $this->connection->bloog;
     		$collection = $db->users;
 
-    		$userDocument = array("email" => $email, "username" => $username, "password"=> $password, "name"=>$name, "following" => array());
+    		$userDocument = array("email" => $email, "username" => $username, "password"=> $password, "name"=>$name, "following" => array(),"followers" =>array());
 
             $checker = $collection->findOne(
             array(
@@ -71,12 +71,12 @@ class UserAccount {
     			return true;
     		}
 
-    	} 
-    	catch (MongoConnectionException $e) 
+    	}
+    	catch (MongoConnectionException $e)
     	{
         	die('Error connecting to MongoDB server');
-    	} 
-    	catch (MongoException $e) 
+    	}
+    	catch (MongoException $e)
     	{
         	die('Error: ' . $e->getMessage());
     	}
@@ -91,7 +91,7 @@ class UserAccount {
 
 		$followingList = $collection->find();
 
-        
+
     }
 
     public function followUser($followID)

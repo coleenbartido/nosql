@@ -125,7 +125,7 @@
 
         						// }
 
-        							$posts = array_merge($posts, $followingPosts);
+        							$timeline = array_merge($timeline, $followingPosts);
 
         						}
         					}
@@ -134,8 +134,8 @@
 
 
 
-        					usort($posts, function($a, $b){
-        						
+        					usort($timeline, function($a, $b){
+
         			 			//if(strtotime($a['timestamp']) == strtotime($b['timestamp'])) return 0;
 								// return ($a<$b)? -1:1;
 								return strtotime($b['timestamp']) - strtotime($a['timestamp']);
@@ -144,14 +144,14 @@
         					//var_dump($posts);
 
 
-    						if($posts == NULL)
+    						if($timeline == NULL)
     						{
     							echo "NO POSTS YET. You might want to follow some people.";
     						}
     						else
     						{
 
-    							foreach($posts as $post)
+    							foreach($timeline as $post)
     							{
     					// 			$date = new DateTime($post['timestamp']);
 									// $date->setTimezone(new DateTimeZone('Asia')); // +04
