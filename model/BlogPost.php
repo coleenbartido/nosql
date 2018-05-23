@@ -52,7 +52,6 @@ class BlogPost {
 
     public function fetchAllPost($userID)
     {
-        //$returnval = 
     }
 
     public function fetchFollowingPosts()
@@ -71,16 +70,30 @@ class BlogPost {
     }
 
 
-    public function createBlogPost($title, $qText)
+    public function createBlogPost($title, $qText, $innerHTML, $contents)
     {
     	try {
 
     		$db = $this->connection->bloog;
     		$collection = $db->posts;
 
-    		$postDocument = array("title" => $title, "post" => $qText, "userID"=> $_SESSION['userID'], "timestamp" => new \MongoDB\BSON\UTCDateTime(), "username" => $_SESSION['username']);
+            $time = time();
+            $timestamp = gmdate("Y-m-d\TH:i:s\Z");
+            
+            
+    		$postDocument = array("title" => $title, "post" => $qText, "userID"=> $_SESSION['userID'], 
+                "timestamp" => $timestamp, "time"=> $time, "username" => $_SESSION['username'], "comment" => array());
 
-    		$collection->insertOne($postDocument);
+    		$result = $collection->insertOne($postDocument);
+            
+            $filename = "../files/" . $_SESSION['userID'] . $time;
+
+            $file = fopen($filename, "w+") or die("Unable to open file!");
+            $txt = $innerHTML;
+            fwrite($file, $txt);
+            fclose($file);
+
+
     		return true;
 
     	} 
@@ -118,10 +131,10 @@ class BlogPost {
     {
         $db = $this->connection->bloog;
         $collection = $db->posts;
+        
+        $query = array("_id" => new MongoDB\BSON\ObjectId($postID));
 
-        $query = array("postID" => $postID);
-
-        $collection->remove($query);
+        $collection->deleteOne($query);
 
         return true;
     }

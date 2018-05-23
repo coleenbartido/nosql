@@ -29,41 +29,37 @@ class UserAccount {
 		$db = $this->connection->bloog;
     	$collection = $db->users;
 
-		$userAccount = $collection->findOne(
-    		array(
-    			'$or' => array(
-    					0 =>
-  						array('email' => $email, 'password' => $password),
-  						1 =>
-  						array('username' => $email, 'password' => $password),
-					)
-				)
-		);
+        $result = $collection->findOne(
+            array(
+                'email' => $email,
+                'password' => $password 
+            )
+        );
 
-		//var_dump($userAccount);
+        $userAccount = $collection->findOne();
 
 		return $userAccount;
     }
 
-    public function registerUser($username, $email, $password)
+    public function registerUser($username, $email, $password, $name)
     {
     	try {
 
     		$db = $this->connection->bloog;
     		$collection = $db->users;
 
-    		$userDocument = array("email" => $email, "username" => $username, "password"=> $password);
+    		$userDocument = array("email" => $email, "username" => $username, "password"=> $password, "name"=>$name, "following" => array());
 
-    		$checker = $collection->findOne(
-    			array(
-    				'$or' => array(
-    						0 =>
-  							array('email' => $email),
-  							1 =>
-  							array('username' => $username),
-						)
-					)
-			);
+            $checker = $collection->findOne(
+            array(
+               '$or' => array(
+                     0 =>
+                          array('email' => $email),
+                     1 =>
+                         array('username' => $username),
+                    )
+                )
+            );
 
     		if($checker != NULL)
     		{

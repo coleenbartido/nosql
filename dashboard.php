@@ -13,7 +13,6 @@
         exit();
     }
 
-
 ?>
 
 <!-- <html>
@@ -102,6 +101,9 @@
         					$user = $userCollection->findOne($userQuery);
         					$following = [];
 
+        					$timeline = [];
+
+
         					if(isset($user['following']))
         					{
         						$following = $user['following'];
@@ -132,23 +134,34 @@
 
 
 
-        					rsort($posts);
+        					usort($posts, function($a, $b){
+        						
+        			 			//if(strtotime($a['timestamp']) == strtotime($b['timestamp'])) return 0;
+								// return ($a<$b)? -1:1;
+								return strtotime($b['timestamp']) - strtotime($a['timestamp']);
+        					});
 
         					//var_dump($posts);
 
 
     						if($posts == NULL)
     						{
-    							echo "NO POSTS YET.";
+    							echo "NO POSTS YET. You might want to follow some people.";
     						}
     						else
     						{
 
     							foreach($posts as $post)
     							{
+    					// 			$date = new DateTime($post['timestamp']);
+									// $date->setTimezone(new DateTimeZone('Asia')); // +04
+
+									// echo $date->format('Y-m-d H:i:s');
 
 
     								$link = "view/viewPost.php?viewPost=". $post['_id'];
+
+    								$editFilename = $userID . $post['time'];
 
     								echo '<article class="mini-post">';
 										echo '<header>';
@@ -160,72 +173,15 @@
 										echo '<div class="img__wrap">';
 											echo '<a href="#" class="image"><img class="img__img" src="https://images.pexels.com/photos/925682	/pexels-photo-925682.png?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" 	alt="" /></a>';
 										echo '<div class="img__description">';
-												echo '<a href="#" class="author"><img src="https://images.pexels.com/photos/235444/		pexels-photo-235444.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="" /><p>' .$post['username'] . '</p></a>';
+												echo '<a href="#" class="author"><img src="https://images.pexels.com/photos/235444/		pexels-photo-235444.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="" /><p>' .$post['name'] . '</p></a>';
 											echo '</div>';
 										echo '</div>';
 									echo '</article>';
 								}
     						}
 
-
-
-    						//$posts = $posts->toArray();
-    						//echo $posts;
-
-							//foreach ($posts as $post) {
-
 							?>
 
-							<!--  -->
-
-							<!-- <article class="mini-post">
-								<header>
-									<h3><a href="#">Vitae sed condimentum</a></h3>
-									<time style="text-align: left; font-size: 8px; padding-top: 6px;"class="published" datetime="2015-10-20">October 20, 2015</time>
-									<p class="text-snippet">Spicy jalapeno pork belly burgdoggen pastrami, ham hock shankle turducken bresaola, burgdoggen filet mignon buffalo swine ball tip short ribs.</p>
-									<p class="read-more"><a>Read More ›</a></p>
-
-								</header>
-								<div class="img__wrap">
-									<a href="#" class="image"><img class="img__img" src="https://images.pexels.com/photos/134058/pexels-photo-134058.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="" /></a>
-									<div class="img__description">
-										<a href="#" class="author"><img src="https://images.pexels.com/photos/718275/pexels-photo-718275.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="" /><p>Jhaya Valenciano</p></a>
-									</div>
-								</div>
-							</article>
-
-							<article class="mini-post">
-								<header>
-									<h3><a href="#">Vitae sed condimentum</a></h3>
-									<time style="text-align: left; font-size: 8px; padding-top: 6px;"class="published" datetime="2015-10-20">October 20, 2015</time>
-									<p class="text-snippet">Spicy jalapeno pork belly burgdoggen pastrami, ham hock shankle turducken bresaola, burgdoggen filet mignon buffalo swine ball tip short ribs.</p>
-									<p class="read-more"><a>Read More ›</a></p>
-								</header>
-								<div class="img__wrap">
-									<a href="#" class="image"><img class="img__img" src="https://images.pexels.com/photos/1072784/pexels-photo-1072784.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="" /></a>
-									<div class="img__description">
-										<a href="#" class="author"><img src="https://images.pexels.com/photos/127229/pexels-photo-127229.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="" /><p>Dexter Co</p></a>
-									</div>
-								</div>
-							</article>
-
-							<article class="mini-post">
-
-								<header>
-									<h3><a href="#">Vitae sed condimentum</a></h3>
-									<time style="text-align: left; font-size: 8px; padding-top: 6px;"class="published" datetime="2015-10-20">October 20, 2015</time>
-									<p class="text-snippet">Spicy jalapeno pork belly burgdoggen pastrami, ham hock shankle turducken bresaola, burgdoggen filet mignon buffalo swine ball tip short ribs.</p>
-									<p class="read-more"><a>Read More ›</a></p>
-								</header>
-
-								<div class="img__wrap">
-									<a href="#" class="image"><img class="img__img" src="https://images.pexels.com/photos/753994/pexels-photo-753994.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="" /></a>
-									<div class="img__description">
-										<a href="#" class="author"><img src="https://images.pexels.com/photos/343717/pexels-photo-343717.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt=""/><p>Juan Dela Cruz is a long name</p></a>
-
-									</div>
-								</div>
-							</article> -->
 							<!--a href="#" class="button small">Follow</a-->
 
 

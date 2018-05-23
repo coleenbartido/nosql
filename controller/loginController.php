@@ -49,7 +49,9 @@
     		} 
     		else
     		{
-    			echo "Account does not exist.";
+    			
+    			header("Location: ../index.php?msg=invalid");
+				exit();
     		}
 
     		

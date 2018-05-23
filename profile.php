@@ -1,11 +1,5 @@
 <?php
 
-
-	// include_once('controller/dashboardController.php');
-
-	// $dashboardController = new dashboardController();
-	// $dashboardController->getBlogPosts();
-
 	session_start();
 
 	if(!isset($_SESSION['userID'])){
@@ -15,13 +9,6 @@
 
 
 ?>
-
-<!-- <html>
-<head><title>DASHBOARD</title></head>
-<body>
-
-</body>
-</html> -->
 
 <!DOCTYPE HTML>
 <html>
@@ -72,82 +59,97 @@
 						</nav>
 					</header>
 
-				<!-- Sidebar -->
-					<div class="main col-md-12 article-post" >
-						<div class="user-profile col-md-offset-2 col-md-8">
-							<div class="user-icon col-md-3">
+				<?php
 
-							</div>
-							<div class="user-buttons col-md-2">
+					require 'vendor/autoload.php';
+						
+					$connection = new MongoDB\Client("mongodb://localhost:27017");
 
-							</div>
-							<div class="user-details col-md-6">
-								<h1>NAME</h1>
-								<a href="#">@Username</a> <br>
-								<div class="follower-count col-md-4">
-									<h3>FOLLOWERS</h3>
-								</div>
-								<div class="following-count col-md-4">
-									<h3>FOLLOWING</h3>
-								</div>
-							</div>
-						</div>
+					$db = $connection->bloog;
+        			$userCollection = $db->users;
+        			$postCollection = $db->posts;
 
-						<div class="posts-feed">
-							<div class="post-temp col-md-offset-2 col-md-8">
-								<div class="col-md-2">
-									<div class="user-icon-sm ">
+        			$userID = $_SESSION['userID'];
+        			$username = $_SESSION['username'];
 
-									</div>
-								</div>
-								<div class="details col-md-6">
-									<h1>article title</h1>
-									<a href="#">date posted</a> <br>
-								</div>
-								<div class="post-buttons col-md-2">
+        			$userQuery = array("_id" => $userID);
+        			$user = $userCollection->findOne($userQuery);
+        			
+        			if(isset($user['following']))
+        			{
+        				$following = $user['following'];
+        			}
+        			if(isset($user['followers']))
+        			{
+        				$followers = $user['followers'];
+        			}
 
-								</div>
-								<div class="post-text col-md-9">
-									<p>TEST</p>
-								</div>
-							</div>
-							<div class="post-temp col-md-offset-2 col-md-8">
-								<div class="col-md-2">
-									<div class="user-icon-sm ">
+        			$postQuery = array("username" => strval($username));
+        			$options = ['sort' => ['timestamp' => -1]];
+        			$posts = $postCollection->find($postQuery, $options)->toArray();
 
-									</div>
-								</div>
-								<div class="details col-md-6">
-									<h1>article title</h1>
-									<a href="#">date posted</a> <br>
-								</div>
-								<div class="post-buttons col-md-2">
+					echo '<div class="main col-md-12 article-post" >';
+						echo '<div class="user-profile col-md-offset-2 col-md-8">';
+							echo '<div class="user-icon col-md-3">';
 
-								</div>
-								<div class="post-text col-md-9">
-									<p>TEST</p>
-								</div>
-							</div>
-							<div class="post-temp col-md-offset-2 col-md-8">
-								<div class="col-md-2">
-									<div class="user-icon-sm ">
+							echo '</div>';
+							echo '<div class="user-buttons col-md-2">';
 
-									</div>
-								</div>
-								<div class="details col-md-6">
-									<h1>article title</h1>
-									<a href="#">date posted</a> <br>
-								</div>
-								<div class="post-buttons col-md-2">
+							echo '</div>';
+							echo '<div class="user-details col-md-6">';
+								echo '<h1>NAME</h1>';
+								echo '<a href="#">'. $username .'</a> <br>';
+								echo '<div class="follower-count col-md-4">';
+									echo '<h3>FOLLOWERS</h3>';
+								echo '</div>';
+								echo '<div class="following-count col-md-4">';
+									echo '<h3>FOLLOWING</h3>';
+								echo '</div>';
+							echo '</div>';
+						echo '</div>';
 
-								</div>
-								<div class="post-text col-md-9">
-									<p>TEST</p>
-								</div>
-							</div>
-						</div>
+						echo '<div class="posts-feed">';
+							if($posts == NULL)
+    						{
+    							echo "NO POSTS YET.";
+    						}
+    						else
+    						{
+    							
+
+    							foreach($posts as $post)
+    							{
+    								$link = "controller/dashboardController.php?functionCall=delete&postID=" . $post['_id'];
+    								echo '<div class="post-temp col-md-offset-2 col-md-8">';
+										echo '<div class="col-md-2">';
+											echo '<div class="user-icon-sm ">';
+
+											echo '</div>';
+										echo '</div>';
+										echo '<div class="details col-md-6">';
+											echo '<h1>' . $post['title'].'</h1>';
+											echo '<h6>' . $post['timestamp'].'</h6> <br>';
+										echo '</div>';
+										echo '<div class="post-buttons col-md-2">';
+											echo '<a href= '. $link .' >Delete</a>';
+										echo '</div>';
+										echo '<div class="post-text col-md-9">';
+											echo '<p>' . $post['post'] .'</p>';
+										echo '</div>';
+									echo '</div>';
+    							}
+    							
+    						}
+
+
+						echo '</div>';
+					
+					?>
+
 					</div>
 			</div>
+
+
 
 			<div class="footer">
 				Insert footer here. <strong>bye world</strong>.

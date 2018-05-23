@@ -63,6 +63,17 @@
   					<h1 class="bloog-title">Bloog</h1>
   				</div>
 
+          <?php
+
+            if(isset($_GET['msg'])) {
+              if($_GET['msg']=="invalid") {
+                  echo '<div class="alert alert-warning alert-dismissible">';
+                  echo '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
+                  echo '<strong>Account already exists.</strong></div>';
+              }
+            } 
+          ?>
+
   				<form class="login" action="../controller/registerController.php" method="POST">
   					<div class="form-group">
   						<label for="inputUsername">Username</label>

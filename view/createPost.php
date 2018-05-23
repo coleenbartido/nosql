@@ -21,7 +21,7 @@
         <h1><a href="#">Bloog</a></h1>
         <nav class="links">
           <ul>
-            <li><a href="#"><span class="icon-home2"></span>Home</a></li>
+            <li><a href="../dashboard.php"><span class="icon-home2"></span>Home</a></li>
             <li><a href="#"><span class="icon-pencil"></span>Write Post</a></li>
           </ul>
         </nav>
@@ -50,14 +50,15 @@
     <label for="article-text">Article Text</label>
     <form id="form" name="form" style="width: 100%; background-color: #fefefe; margin: 0 auto;"  action="../controller/dashboardController.php" method="POST">
   		<label for="article-title">Article Title</label>
-      <input type="text" class="form-control" id="article-title" name="article-title" required="required" placeholder="">
+      <input type="text" class="form-control" id="article-title" name="article-title" required="required" placeholder="" value="Title">
 
-      <input type='hidden' name="functionCall" value="create" />
+      <input type='hidden' name="functionCall" value="create">
 
       <!-- // added this block -->
-      <input type='hidden' name="quillInnerHTML" id="quillInnerHTML" value="" />
-      <input type='hidden' name="quillContents" id="quillContents" value="" />
-      <input type='hidden' name="quillText" id="quillText" value="" />
+      <input type='hidden' name="quillInnerHTML" id="quillInnerHTML">
+      <input type='hidden' name="quillContents" id="quillContents">
+      <input type='hidden' name="quillText" id="quillText">
+      <input type='hidden' name="postPics" id="postPics" value="" />
       <!-- // end block -->
 
     	<div id="editor">
@@ -69,7 +70,7 @@
       </form>
   </div>
 
-  <button onclick="logHtmlContent()">Log content as HTML</button>
+  <!-- <button onclick="logHtmlContent()">Log content as HTML</button> -->
 
 
 
@@ -105,18 +106,44 @@
     		console.log(quill.getText())
   		}
 
-       var form = document.querySelector('form');
+       var form = document.querySelector('#form');
        form.onsubmit = function()
        {
-         var quillInnerHTML = document.querySelector('input[name=quillInnerHTML]');
-         quill.value = quill.root.innerHTML;
 
-         var qContent = document.querySelector('input[name=qContent]');
-         qContent.value = JSON.stringify(quill.getContents());
+         var quillInnerHTML = document.getElementById('quillInnerHTML');
+         quillInnerHTML.value = quill.root.innerHTML;
+         console.log("Quill Value = " + quillInnerHTML.value);
 
+         var qContent = document.querySelector('input[name=quillContents]');
+         //qContent.value = quill.getContents();
+         content = quill.getContents();
+         console.log("Quill Contents = "+ JSON.stringify(content));
+         qContent.value = content;
+        
          var qText = document.querySelector('input[name=quillText]');
          qText.value = quill.getText();
+         console.log("Quill Text = " + qText.value);
 
+
+        imageCount = 0;
+        imageArray = new Array();
+        console.log("Contents Length:" + contents.ops.length);
+        for (var i = 0; i < content.ops.length; i++) {
+          if(content.ops[i].hasOwnProperty("insert")) {
+            if(content.ops[i].insert.hasOwnProperty("image")) {
+              console.log(content.ops[i].insert.image);
+              imageArray.push(content.ops[i].insert.image)
+              imageCount++;
+            }
+          }
+        };
+
+        var postPics = document.querySelector('input[name=postPics]');
+        //This means that imageArray has contents
+        if(imageArray.length > 0) {
+            postPics.value = JSON.stringify(imageArray);
+        }
+        
 
        };
 

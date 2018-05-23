@@ -14,9 +14,13 @@
 		$db = $connection->bloog;
         $postCollection = $db->posts;
 
-        $query = array("_id" => new MongoDB\BSON\ObjectId($postID));
+        //$query = array("_id" => new MongoDB\BSON\ObjectId($postID));
+        $query = array("_id" => $postID);
+
 
         $post = $postCollection->findOne($query);
+
+        echo count($post);
 
 	?>
 

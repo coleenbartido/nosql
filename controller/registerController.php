@@ -26,20 +26,20 @@
     		$password = $_POST['inputPassword'];
 
     		
-    		$isValid = $this->userModel->registerUser($username, $email, $password);
+    		$isValid = $this->userModel->registerUser($username, $email, $password, $name);
 
     		if($isValid)
     		{
-    			//header("Location: https://www.facebook.com");
-    			//exit();
+    			header('Location: ../index.php?msg=success');
+                exit();
     		}
     		else
     		{
-    			echo "Something went wrong";
+                header('Location: ../view/register.php?msg=invalid');
+                exit();
     		}
     		
-            header('Location: ../index.php');
-            exit();
+            
     		
 
     		//var_dump(json_encode($user));

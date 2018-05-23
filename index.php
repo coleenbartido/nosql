@@ -76,9 +76,29 @@
           <!-- <img src="assets/logo.png"/> -->
 				</div>
 
+				<br>
+
+			<?php
+
+            	if(isset($_GET['msg'])) {
+              		if($_GET['msg']=="invalid") {
+                  		echo '<div class="alert alert-warning alert-dismissible">';
+                  		echo '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
+                  		echo '<strong>Account does not exist.</strong></div>';
+              		} 
+              		else
+              		{
+              			echo '<div class="alert alert-success alert-dismissible">';
+                  		echo '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
+                  		echo '<strong>Account created.</strong></div>';
+              		}
+
+            	} 
+          	?>	
+
 				<form class="login-form col-sm-12 col-md-12" action="controller/loginController.php" method="POST">
 					<div class="form-group">
-						<label for="inputEmail">Email address or username</label>
+						<label for="inputEmail">Email</label>
 						<input class="form-control" id="inputEmail" name="inputEmail" required="required" placeholder="johndoe@bloog.com"><!-- type="email" -->						
 					</div>
 					<div class="form-group">

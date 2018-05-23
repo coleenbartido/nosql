@@ -38,10 +38,15 @@
 		}
 	} 
 	else
-	{
-			header("Location: ../dashboard.php");
-			exit();
-		
+	{		if($_GET['functionCall'] == "delete")
+			{
+				$blogController->deleteBlogPost();
+			}
+			else
+			{
+				header("Location: ../dashboard.php");
+				exit();
+			}
 	}
 	
 	
@@ -66,14 +71,14 @@
 
 			
 			$title = $_POST['article-title'];
-			$text = $_POST['quillText'];
-			// echo $text;
-			// $innerHTML = $_POST['quillInnerHTML'];
-			// echo $innerHTML;
-			// $contents = $_POST['quillContents'];
-			// echo $contents;
+			$qText = $_POST['quillText'];
+			// echo $qText;
+			$innerHTML = $_POST['quillInnerHTML'];
+
+			$contents = $_POST['quillContents'];
+			//echo $contents;
 			
-			$this->postModel->createBlogPost($title, $text);
+			$this->postModel->createBlogPost($title, $qText, $innerHTML, $contents);
 
 			header('Location: ../dashboard.php');
 			exit();
@@ -86,7 +91,7 @@
 			$title = $_POST['title'];
 			$post = $_POST['post'];
 
-			$this->model->updateBlogPost($postID, $title, $post);
+			$this->postModel->updateBlogPost($postID, $title, $post);
 
 			header('Location: ../dashboard.php');
 			exit();
@@ -94,11 +99,11 @@
 
 		public function deleteBlogPost()
 		{
-			$postID = $_POST['postID'];
+			$postID = $_GET['postID'];
 
-			$this->model->deleteBlogPost($postID);
+			$this->postModel->deleteBlogPost($postID);
 
-			header('Location: ../dashboard.php');
+			header('Location: ../profile.php');
 			exit();
 
 		}
