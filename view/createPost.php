@@ -45,12 +45,12 @@
 
 
 
-  <div class="container col col-md-7 col" style="border: 1px solid red;">
-
-    <label for="article-text">Article Text</label>
-    <form id="form" name="form" style="width: 100%; background-color: #fefefe; margin: 0 auto;"  action="../controller/dashboardController.php" method="POST">
-  		<label for="article-title">Article Title</label>
-      <input type="text" class="form-control" id="article-title" name="article-title" required="required" placeholder="" value="Title">
+  <div class="container col col-md-7 col">
+    <h1 class="write-post">Write Post</h1>
+    <!-- <label for="form">Article Text</label> -->
+    <form id="form" name="form"  action="../controller/dashboardController.php" method="POST">
+  		<label for="article-title" class="article-title">Title</label>
+      <input type="text" class="form-control article-input" id="article-title" name="article-title" required="required" placeholder="" value="">
 
       <input type='hidden' name="functionCall" value="create">
 
@@ -61,10 +61,11 @@
       <input type='hidden' name="postPics" id="postPics" value="" />
       <!-- // end block -->
 
-    	<div id="editor">
+      <label for="editor" class="article-title">Body</label>
+    	<div id="editor" >
 
     	</div>
-    	<button type="submit" value="submit">Submit</button>
+    	<button class="publish-article" type="submit" value="submit">Publish Post</button>
     	<!-- <button onclick="logHtmlContent()">Log content as HTML</button> -->
     	<!-- <button onclick=""> -->
       </form>
@@ -86,7 +87,7 @@
         ['image', 'video'],
         [ 'align', {align:'center'},{align:'right'},{align:'justify' }],
         [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-        [{ 'indent': '-1'}, { 'indent': '+1' }],
+        // [{ 'indent': '-1'}, { 'indent': '+1' }],
         // [{ 'header': 1 }, { 'header': 2 }],               // custom button values
   			['blockquote', 'code-block'],
 		];
@@ -96,7 +97,7 @@
   			},
     		theme: 'snow'
   		});
-  		
+
       function logHtmlContent() {
         console.log("***innerHTML***")
     		console.log(quill.root.innerHTML);  //save to DB kasi ito yung i-lload sa single page.
@@ -119,7 +120,7 @@
          content = quill.getContents();
          console.log("Quill Contents = "+ JSON.stringify(content));
          qContent.value = content;
-        
+
          var qText = document.querySelector('input[name=quillText]');
          qText.value = quill.getText();
          console.log("Quill Text = " + qText.value);
@@ -143,7 +144,7 @@
         if(imageArray.length > 0) {
             postPics.value = JSON.stringify(imageArray);
         }
-        
+
 
        };
 
