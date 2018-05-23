@@ -85,7 +85,7 @@
                   		echo '<div class="alert alert-warning alert-dismissible">';
                   		echo '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
                   		echo '<strong>Account does not exist.</strong></div>';
-              		} 
+              		}
               		else
               		{
               			echo '<div class="alert alert-success alert-dismissible">';
@@ -93,13 +93,13 @@
                   		echo '<strong>Account created.</strong></div>';
               		}
 
-            	} 
-          	?>	
+            	}
+          	?>
 
 				<form class="login-form col-sm-12 col-md-12" action="controller/loginController.php" method="POST">
 					<div class="form-group">
 						<label for="inputEmail">Email</label>
-						<input class="form-control" id="inputEmail" name="inputEmail" required="required" placeholder="johndoe@bloog.com"><!-- type="email" -->						
+						<input class="form-control" id="inputEmail" name="inputEmail" required="required" placeholder="johndoe@bloog.com"><!-- type="email" -->
 					</div>
 					<div class="form-group">
 						<label for="exampleInputPassword1">Password</label>
@@ -107,8 +107,10 @@
 						<a class="forgot-pass" href="#">Forgot Password?</a>
 					</div>
 
-          <div class="buttons col-md-12">
-  					<button type="submit" class="btn btn-primary" value="Submit">Login</button>
+          <div class="col-md-12">
+						<div class="buttons">
+  						<button type="submit" class="btn btn-primary" value="Submit">Login</button>
+						</div>
           <div>
 
           <div class="register col-md-12">

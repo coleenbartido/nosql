@@ -1,7 +1,8 @@
 .user-profile {
   height: 215px;
-  border: 1px solid black;
-  margin: 1% auto;
+  margin: 1% auto 3%;
+  background-color: #FFFFFF;
+  box-shadow: 0px 7px 20px grey;
 }
 
 .user-icon {
@@ -9,6 +10,7 @@
   height: 160px;
   border: 1px solid black;
   margin: 3% auto;
+  margin-left: 25px;
   float: left;
   position: relative;
 }
@@ -31,6 +33,7 @@
   height: 30px;
   border: 1px solid black;
   float: right;
+  right: 25px;
   margin: 3% auto;
   position: relative;
 }
@@ -52,19 +55,19 @@
 
 .posts-feed {
   height: auto;
-  margin: 1% auto;
+  margin: 1% 10%;
 }
 
 .post-temp {
   margin: 1% auto;
-  border: 1px solid black;
   padding: 15px;
+  background-color: #FFFFFF;
+  box-shadow: 0 2px 10px 2px grey;
 }
 
-.details {
-  margin: auto 3%;
+.details, .icon-holder {
   display: inline-block;
-  padding: 0;
+  padding: 0 3%;
 }
 
 .details h1 {
@@ -75,19 +78,29 @@
 
 .user-icon-sm {
   padding: 0;
-  display: inline-block;
+  float: right;
+}
+
+.icon-holder img {
+  width: 60px;
+  height: 60px;
 }
 
 .post-buttons {
   width: 150px;
   height: 30px;
-  border: 1px solid black;
   padding: 0;
   float: right;
   position: relative;
 }
 
+.post-buttons a i {
+  margin: 0 5%;
+  font-size: 20px;
+  float: right;
+}
+
 .post-text {
-  border: 1px solid red;
   margin: 0 20%;
+  padding: 0;
 }

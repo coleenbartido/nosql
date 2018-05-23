@@ -19,6 +19,7 @@
 
 		<link rel="stylesheet" href="https://i.icomoon.io/public/temp/4045dc6036/UntitledProject/style.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 		<link rel="stylesheet" href="assets/css/user-profile.css" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 
@@ -62,7 +63,7 @@
 				<?php
 
 					require 'vendor/autoload.php';
-						
+
 					$connection = new MongoDB\Client("mongodb://localhost:27017");
 
 					$db = $connection->bloog;
@@ -74,7 +75,7 @@
 
         			$userQuery = array("_id" => $userID);
         			$user = $userCollection->findOne($userQuery);
-        			
+
         			if(isset($user['following']))
         			{
         				$following = $user['following'];
@@ -124,37 +125,35 @@
     						}
     						else
     						{
-    							
+
 
     							foreach($posts as $post)
     							{
     								$edit = "view/editPost.php?postID=" . $post['_id'] . "&time=" . $post['time'];
     								$delete = "controller/dashboardController.php?functionCall=delete&postID=" . $post['_id'] . "&time=" . $post['time'];
     								echo '<div class="post-temp col-md-offset-2 col-md-8">';
-										echo '<div class="col-md-2">';
-											echo '<div class="user-icon-sm ">';
-
+											echo '<div class="icon-holder col-md-2">';
+													echo '<img src="">';
+											echo '</div>';
+											echo '<div class="details col-md-6">';
+												echo '<h1>' . $post['title'].'</h1>';
+												echo '<h6>' . $post['timestamp'].'</h6> <br>';
+											echo '</div>';
+											echo '<div class="post-buttons col-md-2">';
+											echo '<a href= '. $edit .' ><i class="fa fa-pencil" aria-hidden="true"></i></a>';
+											echo '<a href= '. $delete .' ><i class="fa fa-trash" aria-hidden="true"></i></a>';
+											echo '</div>';
+											echo '<div class="post-text col-md-9">';
+												echo '<p>' . $post['post'] .'</p>';
 											echo '</div>';
 										echo '</div>';
-										echo '<div class="details col-md-6">';
-											echo '<h1>' . $post['title'].'</h1>';
-											echo '<h6>' . $post['timestamp'].'</h6> <br>';
-										echo '</div>';
-										echo '<div class="post-buttons col-md-2">';
-											echo '<a href= '. $edit .' >Edit</a>';
-											echo '<a href= '. $delete .' >Delete</a>';
-										echo '</div>';
-										echo '<div class="post-text col-md-9">';
-											echo '<p>' . $post['post'] .'</p>';
-										echo '</div>';
-									echo '</div>';
     							}
-    							
+
     						}
 
 
 						echo '</div>';
-					
+
 					?>
 
 					</div>
