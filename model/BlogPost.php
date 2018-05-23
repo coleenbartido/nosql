@@ -1,7 +1,7 @@
 <?php
 
 	//session_start();
-	require '../vendor/autoload.php';
+	require '../vendor/autoload.php'; 
     session_start();
 
 class BlogPost {
@@ -13,9 +13,9 @@ class BlogPost {
 	public $blogPost;
 
 	public $connection;
-
-	public function __construct(/*$userID, $author, $timestamp, $title, $blogPost*/)
-    {
+	
+	public function __construct(/*$userID, $author, $timestamp, $title, $blogPost*/)  
+    {  
      //    $this->userID = $userID;
 	    // $this->author = $author;
 	    // $this->timestamp = $timestamp;
@@ -23,7 +23,7 @@ class BlogPost {
 	    // $this->blogPost = $blogPost;
 
 	    $this->connection = new MongoDB\Client("mongodb://localhost:27017");
-    }
+    } 
 
     public function getPosts($userID)
     {
@@ -50,26 +50,6 @@ class BlogPost {
     }
 
 
-    public function fetchAllPost($userID)
-    {
-    }
-
-    public function fetchFollowingPosts()
-    {
-        $postAndTimestampArray = [];
-
-        foreach($following as $index => $userID)
-        {
-            $postAndTimestampArray.push(fetchAllPosts().each());
-        }
-
-        foreach($postAndTimestampArray as $postID => $timestamp)
-        {
-                //print here
-        }
-    }
-
-
     public function createBlogPost($title, $qText, $innerHTML, $contents)
     {
     	try {
@@ -79,30 +59,31 @@ class BlogPost {
 
             $time = time();
             $timestamp = gmdate("Y-m-d\TH:i:s\Z");
-
-
-    		$postDocument = array("title" => $title, "post" => $qText, "userID"=> $_SESSION['userID'],
-                "timestamp" => $timestamp, "time"=> $time, "username" => $_SESSION['username'], "comments" => array());
-
-    		$result = $collection->insertOne($postDocument);
-
-            $filename = "../files/" . $_SESSION['userID'] . $time;
+            
+            $filename = "../files/" . $_SESSION['userID'] . $time .".html";
 
             $file = fopen($filename, "w+") or die("Unable to open file!");
             $txt = $innerHTML;
             fwrite($file, $txt);
             fclose($file);
 
+    		$postDocument = array("title" => $title, "post" => $qText, "userID"=> $_SESSION['userID'], 
+                "timestamp" => $timestamp, "time"=> $time, "username" => $_SESSION['username'], "comments" => array(), "file"=> $filename);
+
+    		$result = $collection->insertOne($postDocument);
+            
+           
+
 
     		return true;
 
-    	}
-    	catch (MongoConnectionException $e)
+    	} 
+    	catch (MongoConnectionException $e) 
     	{
         	//die('Error connecting to MongoDB server');
         	return false;
-    	}
-    	catch (MongoException $e)
+    	} 
+    	catch (MongoException $e) 
     	{
         	die('Error: ' . $e->getMessage());
         	return false;
@@ -111,30 +92,47 @@ class BlogPost {
 
     }
 
+    
 
-
-    public function updateBlogPost($postID, $title, $post)
+    public function updateBlogPost($postID, $title, $innerHTML, $quillText, $time)
     {
         $db = $this->connection->bloog;
         $collection = $db->posts;
 
+        // $query = $collection->updateOne(
+        //         [ '_id' => $postID ],
+        //         [ '$set' => [ 'title' => $title, 'post' => $quillText]]
+        // );
+		
         $query = $collection->updateOne(
-                [ '_id' => $postID ],
-                [ '$set' => [ 'title' => $title, 'post' => $post ]]
-        );
+            array('_id' => new MongoDB\BSON\ObjectId($postID)), 
+            array('$set' => array('title' => $title, 'post' => $quillText))
+        );  
+
+        $filename = "../files/" . $_SESSION['userID'] . $time . ".html";
+
+        $file = fopen($filename, "w") or die("Unable to open file!");
+        $txt = $innerHTML;
+        fwrite($file, $txt);
+        fclose($file);
+
 
         return true;
 
     }
 
-    public function deleteBlogPost($postID)
+    public function deleteBlogPost($postID, $time)
     {
         $db = $this->connection->bloog;
         $collection = $db->posts;
 
+        $filename = "../files/" . $_SESSION['userID'] . $time .".html";
+        
         $query = array("_id" => new MongoDB\BSON\ObjectId($postID));
 
         $collection->deleteOne($query);
+
+        unlink($filename);
 
         return true;
     }

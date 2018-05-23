@@ -35,7 +35,7 @@
 						<h1><a href="#">Bloog</a></h1>
 						<nav class="links">
 							<ul>
-								<li><a href="#"><span class="icon-home2"></span>Home</a></li>
+								<li><a href="dashboard.php"><span class="icon-home2"></span>Home</a></li>
 								<li><a href="view/createPost.php"><span class="icon-pencil"></span>Write Post</a></li>
 							</ul>
 						</nav>
@@ -79,9 +79,18 @@
         			{
         				$following = $user['following'];
         			}
+        			else
+        			{
+        				$following = 0;
+        			}
+
         			if(isset($user['followers']))
         			{
         				$followers = $user['followers'];
+        			}
+        			else
+        			{
+        				$followers = 0;
         			}
 
         			$postQuery = array("username" => strval($username));
@@ -97,7 +106,7 @@
 
 							echo '</div>';
 							echo '<div class="user-details col-md-6">';
-								echo '<h1>NAME</h1>';
+								echo '<h1>' . $user['name'] .'</h1>';
 								echo '<a href="#">'. $username .'</a> <br>';
 								echo '<div class="follower-count col-md-4">';
 									echo '<h3>FOLLOWERS</h3>';
@@ -119,7 +128,8 @@
 
     							foreach($posts as $post)
     							{
-    								$link = "controller/dashboardController.php?functionCall=delete&postID=" . $post['_id'];
+    								$edit = "view/editPost.php?postID=" . $post['_id'] . "&time=" . $post['time'];
+    								$delete = "controller/dashboardController.php?functionCall=delete&postID=" . $post['_id'] . "&time=" . $post['time'];
     								echo '<div class="post-temp col-md-offset-2 col-md-8">';
 										echo '<div class="col-md-2">';
 											echo '<div class="user-icon-sm ">';
@@ -131,7 +141,8 @@
 											echo '<h6>' . $post['timestamp'].'</h6> <br>';
 										echo '</div>';
 										echo '<div class="post-buttons col-md-2">';
-											echo '<a href= '. $link .' >Delete</a>';
+											echo '<a href= '. $edit .' >Edit</a>';
+											echo '<a href= '. $delete .' >Delete</a>';
 										echo '</div>';
 										echo '<div class="post-text col-md-9">';
 											echo '<p>' . $post['post'] .'</p>';

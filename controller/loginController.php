@@ -40,11 +40,11 @@
     			$_SESSION['userID'] = $user->_id;
     			$_SESSION['username'] = $user->username;
 					
-				//header("Location: dashboardController.php");
+				
 				header("Location: ../dashboard.php");
 				exit();
 
-    			//include '../view/dashboard.php';
+    			
 
     		} 
     		else

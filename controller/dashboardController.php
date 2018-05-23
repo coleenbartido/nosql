@@ -28,10 +28,6 @@
 				$blogController->updateBlogPost();
 				break;
 
-			case "delete":
-				$blogController->deleteBlogPost();
-				break;
-
 			default: 
 				echo "Function call does not exist";
 				break;
@@ -87,21 +83,24 @@
 
 		public function updateBlogPost()
 		{
-			$postID = $_POST['postID'];
-			$title = $_POST['title'];
-			$post = $_POST['post'];
+			$postID = $_POST['postId'];
+			$title = $_POST['article-title'];
+			$innerHTML = $_POST['quillInnerHTML'];
+			$quillText = $_POST['quillText'];
+			$time = $_POST['time'];
 
-			$this->postModel->updateBlogPost($postID, $title, $post);
+			$this->postModel->updateBlogPost($postID, $title, $innerHTML, $quillText, $time);
 
-			header('Location: ../dashboard.php');
+			header('Location: ../profile.php');
 			exit();
 		}
 
 		public function deleteBlogPost()
 		{
 			$postID = $_GET['postID'];
+			$time = $_GET['time'];
 
-			$this->postModel->deleteBlogPost($postID);
+			$this->postModel->deleteBlogPost($postID, $time);
 
 			header('Location: ../profile.php');
 			exit();
