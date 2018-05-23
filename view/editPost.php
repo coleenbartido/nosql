@@ -61,7 +61,7 @@
                 $postCollection = $db->posts;
 
                 $userID = $_SESSION['userID'];
-  
+
                 $query = array('userID'=> $userID, 'time'=> (int)$_GET['time']);
                 $post = $postCollection->findOne($query);
 
@@ -73,7 +73,7 @@
                 // echo "<div class='form-group'>";
                 // echo "<input name='postId' type ='hidden' value= " . $post['_id'].">";
                 // echo "<input name='about' type='hidden'></div>";
-        
+
                 // echo "<div id='editor'>";
                 //     echo file_get_contents($post['filename']);
                 // echo "</div>";
@@ -82,7 +82,7 @@
                 // echo "<input class = 'btn btn-lg btn-primary btn-block button' type='submit' name='submit' value='Submit Post!'/>";
                 // echo "<a href='../profile.php' class='btn btn-primary'>Go Back to Profile</a>";
                 // echo "</form>"; -->
- 
+
 
 
                 <!-- echo "<div class='container col col-md-7 col' style='border: 1px solid red;'>";
@@ -108,12 +108,13 @@
                 echo "</div>"; -->
 
 
-                <div class="container col col-md-7 col" style="border: 1px solid red";>
-                    <label for="article-text">Article Text</label>
-                    <form id='form' class='form' name='form' style='width: 100%; background-color: #fefefe; margin: 0 auto;' action='../controller/dashboardController.php' method='POST'>
 
-                    <label for='article-title'>Article Title</label>
-                    <input type='text' class='form-control' id='article-title' name='article-title' required='required' placeholder='' value= "<?php echo $post['title']  ?>" >
+                <div class="container col col-md-7 col">
+                  <h1 class="write-post">Edit Post</h1>
+                    <!-- <label for="article-text">Article Text</label> -->
+                    <form id='form' class='form' name='form' action='../controller/dashboardController.php' method='POST'>
+                    <label for='article-title'class="article-title">Title</label>
+                    <input type='text' class='form-control article-input' id='article-title' name='article-title' required='required' placeholder='' value= "<?php echo $post['title']  ?>" >
 
                     <input type='hidden' name='postId' value="<?php echo $post['_id']  ?>" >
                     <input type='hidden' name='time' value="<?php echo $_GET['time'] ?>" >
@@ -122,11 +123,12 @@
                     <input type='hidden' id='quillText' name='quillText'>
                     <input type='hidden' id='quillInnerHTML' name='quillInnerHTML'>
 
+                    <label for="editor" class="article-title">Body</label>
                     <div id='editor'>
                          <?php echo file_get_contents($post['file']) ?>
                     </div>
 
-                    <button type="submit" value="submit">Submit</button>
+                    <button class="publish-article" type="submit" value="submit">Edit Post</button>
                     </form>
                   </div>
 
@@ -141,11 +143,11 @@
           ['image', 'video'],
           [ 'align', {align:'center'},{align:'right'},{align:'justify' }],
           [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-          [{ 'indent': '-1'}, { 'indent': '+1' }],
+          // [{ 'indent': '-1'}, { 'indent': '+1' }],
           // [{ 'header': 1 }, { 'header': 2 }],               // custom button values
           ['blockquote', 'code-block'],
       ];
-      
+
       var quill = new Quill('#editor', {
         modules: {
           toolbar: toolbarOptions
@@ -158,7 +160,7 @@
       {
          var quillInnerHTML = document.getElementById('quillInnerHTML');
          quillInnerHTML.value = quill.root.innerHTML;
-         
+
          var qText = document.querySelector('input[name=quillText]');
          qText.value = quill.getText();
 

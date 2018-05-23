@@ -47,7 +47,7 @@
 
   <div class="container col col-md-7 col">
     <h1 class="write-post">Write Post</h1>
-    <!-- <label for="form">Article Text</label> -->
+      <!-- <label for="form">Article Text</label> -->
     <form id="form" name="form"  action="../controller/dashboardController.php" method="POST">
   		<label for="article-title" class="article-title">Title</label>
       <input type="text" class="form-control article-input" id="article-title" name="article-title" required="required" placeholder="" value="">
