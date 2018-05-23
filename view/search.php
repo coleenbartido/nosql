@@ -72,6 +72,18 @@
                   $userID = $_SESSION['userID'];
                   $username = $_SESSION['username'];
 
+                  //get logged in user's details
+                  $userQuery = array("_id" => $userID);
+                  $user = $userCollection->findOne($userQuery);
+          
+                  //get user FOLLOWING for FOLLOW BUTTON
+                  $following = [];
+          
+                  if(isset($user['following']))
+                  {
+                      $following = $user['following'];
+                  }
+
                   //get search term from URL
                   $searchQuery = $_GET['search'];
 
@@ -112,7 +124,15 @@
                                       }
                                       else
                                       {
-                                        echo "FOLLOW BUTTON";
+                                        if(in_array($post['username'], $following))
+                                        {
+                                            echo "UNFOLLOW";
+                                        }
+                                        else
+                                        {
+                                          echo "FOLLOW BUTTON";
+                                        }
+
                                       }
                                     ?>
                                 </div>
@@ -137,7 +157,7 @@
 
       </div>
 
-      
+
       <div class="footer">
         Insert footer here. <strong>bye world</strong>.
       </div>
