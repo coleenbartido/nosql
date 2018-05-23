@@ -23,22 +23,33 @@ class UserAccount {
 		$this->connection = new MongoDB\Client("mongodb://localhost:27017");
 	}
 
-    public function getUser($email, $password)
+		public function getUser($email, $password)
     {
 
 		$db = $this->connection->bloog;
     	$collection = $db->users;
 
-        $result = $collection->findOne(
+        // $result = $collection->findOne(
+        //     array(
+        //         'email' => $email,
+        //         'password' => md5($password)
+        //     )
+        // );
+
+        $checker = $collection->findOne(
             array(
-                'email' => $email,
-                'password' => $password
-            )
-        );
+               '$or' => array(
+                     0 =>
+                          array('email' => $email, "password"=>md5($password)),
+                     1 =>
+                         array('username' => $email, "password"=>md5($password)),
+                    )
+                )
+            );
 
-        $userAccount = $collection->findOne();
+        //$userAccount = $collection->findOne($resul);
 
-		return $userAccount;
+		return $checker;
     }
 
     public function registerUser($username, $email, $password, $name)
@@ -48,7 +59,7 @@ class UserAccount {
     		$db = $this->connection->bloog;
     		$collection = $db->users;
 
-    		$userDocument = array("email" => $email, "username" => $username, "password"=> $password, "name"=>$name, "following" => array(),"followers" =>array());
+    		$userDocument = array("email" => $email, "username" => $username, "password"=> md5($password), "name"=>$name, "following" => array(),"followers" =>array());
 
             $checker = $collection->findOne(
             array(
