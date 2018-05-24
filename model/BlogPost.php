@@ -136,6 +136,19 @@ class BlogPost {
 
         return true;
     }
+
+    public function addComment($userID, $username, $postID, $comment)
+    {
+        $db = $this->connection->bloog;
+        $collection = $db->posts;
+
+        $timestamp = gmdate("Y-m-d\TH:i:s\Z");
+
+        $checkPost = array("_id" => new MongoDB\BSON\ObjectId($postID));
+        $commentUpdate = array('$push' => array('comments' => array( "username" => $username, "comment"=> $comment, "timestamp" => $timestamp )));
+
+        $collection->updateOne($checkPost, $commentUpdate);
+    }
 }
 
 ?>

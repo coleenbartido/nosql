@@ -2,16 +2,6 @@
 	
 	include("../model/BlogPost.php");
 
-	// if(!isset($_SESSION)) 
- //    { 
- //        session_start(); 
- //    }
- //    else
- //    {
- //        session_destroy();
- //        session_start(); 
- //    }
-
 	session_start();
 
 	$blogController = new dashboardController();
@@ -26,6 +16,10 @@
 		
 			case "update":
 				$blogController->updateBlogPost();
+				break;
+
+			case "comment":
+				$blogController->addComment();
 				break;
 
 			default: 
@@ -55,6 +49,7 @@
 		public function __construct()
 		{
 			$this->postModel = new BlogPost();
+			
 		}
 
 		public function getPosts()
@@ -107,18 +102,39 @@
 
 		}
 
+		public function addComment()
+		{
+
+			$userID = $_SESSION['userID'];
+			$username = $_SESSION['username'];
+
+			$comment = $_POST['comment-area'];
+			$postID = $_POST['postID'];
+
+			echo $comment;
+
+			$this->postModel->addComment($userID, $username, $postID, $comment);
+
+			header("Location: ../view/viewPost.php?viewPost=" . $postID);
+			exit();
+		}
+
 		public function search()
 		{
-			$searchQuery = $_GET['searchTerm'];
+			// $searchQuery = $_GET['search'];
 
-			$this->model->search();
+			// $this->model->search();
 
-			header('Location: ../search.php?searchTerm=' . $searchQuery);
-			exit;
+			// header('Location: ../search.php?search=' . $searchQuery);
+			// exit;
 		}
+
 
 		public function logout()
 		{
+			
+			unset($_SESSION['userID']);
+			unset($_SESSION['username']);
 			session_destroy();
 			
 			header("Location: ../index.php");
