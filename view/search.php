@@ -40,13 +40,13 @@
             <nav class="main">
               <ul>
                 <li class="search">
-                  <a class="fa-search" href="search.php?searchTerm='blog'">Search</a>
+                  <a class="fa-search" href="search.php?search='blog'">Search</a>
                   <form id="search" method="get" action="#">
                     <input type="text" name="query" placeholder="Search" />
                   </form>
                 </li>
                 <li class="dropdown">
-                    <a href="profile.php" class="account" >
+                    <a href="../profile.php" class="account" >
                     <img src="images/avatar.jpg" class="profile-circle"/>
                     </a>
                 </li>
@@ -57,7 +57,7 @@
             </nav>
           </header>
           
-              <h1>SEARCH</h1>
+              <!-- <h1>SEARCH</h1> -->
 
 
           <?php
@@ -78,10 +78,15 @@
           
                   //get user FOLLOWING for FOLLOW BUTTON
                   $following = [];
-          
+
                   if(isset($user['following']))
                   {
-                      $following = $user['following'];
+
+                    foreach($user['following'] as $follow)
+                    {
+                      
+                        array_push($following, $follow);
+                    }
                   }
 
                   //get search term from URL
@@ -97,7 +102,10 @@
                   //full text searching
                   $searchResults = $userCollection->find($findQuery)->toArray();
 
+                  // var_dump($searchResults);
 
+                  echo '<div class="main col-md-12 article-post" >';
+                    echo '<div class="posts-feed">';
                   if($searchResults == NULL)
                   {
                       echo "NO RESULTS FOUND";
@@ -106,31 +114,55 @@
                   {
 
                       //loop through results
+
                       foreach($searchResults as $user)
                       {
-                  
+
+
+
+                        // echo '<div class="post-temp col-md-offset-2 col-md-8">';
+                        //     echo '<div class="icon-holder col-md-2">';
+                        //       echo '<img src="assets/dp.jpg">';
+                        //     echo '</div>';
+                        //     echo '<div class="details col-md-6">';
+                        //       echo '<h1>' . $user['name'].'</h1>';
+                        //       echo '<h6>' . $user['username'].'</h6> <br>';
+                        //     echo '</div>';
+                        //     echo '<div class="post-buttons col-md-2">';
+                        //         // echo '<a href= '. $edit .' ><i class="fa fa-pencil" aria-hidden="true"></i></a>';
+                        //         // echo '<a href= '. $delete .' ><i class="fa fa-trash" aria-hidden="true"></i></a>';
+                        //     echo '</div>';
+                        //     echo '<div class="post-text col-md-9">';
+                        //         echo '<p>' . $user['email'] .'</p>';
+                        //     echo '</div>';
+                        // echo '</div>';
+
           ?>
 
-                          <div class="main col-md-12 article-post" >
+                         <div class="main col-md-12 article-post" >
                               <div class="user-profile col-md-offset-2 col-md-8">
                                 <div class="user-icon col-md-3">
+                                    <img src="../assets/noface.png">
                                 </div>
                                 
                                 <div class="user-buttons col-md-2">
                                     <?php 
                                       if($user['username'] == $username)
                                       {
-                                        echo "IT ME";
+                                         echo '<a href="../profile.php">Go to your profile.</a>';
                                       }
                                       else
                                       {
-                                        if(in_array($post['username'], $following))
+
+                                        if(in_array($user['username'], $following))
                                         {
-                                            echo "UNFOLLOW";
+                                            echo "FOLLOWING";
+
                                         }
                                         else
                                         {
-                                          echo "FOLLOW BUTTON";
+                                            $link = "../controller/userController.php?functionCall=follow&username=" . $user['username'] . '&userId=' . $user['_id'] .'&search=' . $searchQuery;
+                                            echo '<a href='. $link .'>FOLLOW</a>';
                                         }
 
                                       }
@@ -153,7 +185,20 @@
                               </div>
                             </div>
 
-          <?php    }  } ?>
+                            
+
+          <?php
+
+                    }
+                  }
+                    echo '</div>';
+                  echo '</div>';
+                  
+          ?>              
+
+                         
+
+          
 
       </div>
 
