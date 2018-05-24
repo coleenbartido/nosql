@@ -23,7 +23,7 @@
 
 .user-details {
   height: 150px;
-  margin: 3% auto;
+  margin: 4% auto;
   float: left;
   position: relative;
 }
@@ -35,18 +35,26 @@
 }
 
 .follower-count, .following-count {
-  height: 85px;
+  height: 70px;
   display: inline-block;
   position: relative;
   padding: 0;
+  margin-right: 10%;
 }
 
-.follower-count h3, .following-count h3 {
+
+.h3count {
+  margin: 1% auto 0;
+  font-size: 36px;
+}
+
+.h3label {
   width: initial;
   letter-spacing: 0;
   margin: 0;
   bottom: 0;
   position: absolute;
+  font-weight: lighter;
 }
 
 .posts-feed {
@@ -100,7 +108,7 @@
 }
 
 .post-buttons a i {
-  margin: 0 5%;
+  margin: 0 8%;
   font-size: 20px;
   float: right;
 }
@@ -115,7 +123,15 @@
   border-radius: 50px;
   height: 45px;
   width: 45px !important;
-  margin: 13% -50%;
+  margin: 8% -28%;
+}
+
+.account-active {
+  border: 2px solid #2EAABE !important;
+  border-radius: 50px;
+  height: 45px;
+  width: 45px !important;
+  margin: 8% -28%;
 }
 
 .profile-circle {
@@ -123,6 +139,18 @@
   height: 45px;
   border-radius: 50px;
   position: relative;
-  top: -1px;
+  top: -10px;
   left: -65px;
+}
+
+.dropdown-menu {
+  left: -125px;
+  top: 65px;
+  position: absolute;
+  display: none !important;
+}
+
+.active {
+  color: #2EAABE !important;
+  font-weight: bolder !important;
 }

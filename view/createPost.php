@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://i.icomoon.io/public/temp/4045dc6036/UntitledProject/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="../assets/css/user-profile.css">
   </head>
 <body>
 
@@ -22,21 +23,24 @@
         <nav class="links">
           <ul>
             <li><a href="../dashboard.php"><span class="icon-home2"></span>Home</a></li>
-            <li><a href="#"><span class="icon-pencil"></span>Write Post</a></li>
+            <li><a href="#" class="active"><span class="icon-pencil"></span>Write Post</a></li>
           </ul>
         </nav>
         <nav class="main">
-          <ul>
-            <li class="search">
-              <a class="fa-search" href="#search">Search</a>
+          <ul class="">
+            <li class="search" style="margin: 0 25px;">
+              <a class="fa-search" href="view/search.php?search=">Search</a>
               <form id="search" method="get" action="#">
                 <input type="text" name="query" placeholder="Search" />
               </form>
             </li>
             <li class="dropdown">
-                <a href=""# class="account" >
-                <img src="images/avatar.jpg" class="profile-circle"/>
-                </a>
+              <a href="../profile.php" class="account dropdown-toggle" data-toggle="dropdown">
+                <img src="../assets/dp.jpg" class="profile-circle"/>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Logout</a></li>
+              </ul>
             </li>
           </ul>
         </nav>
@@ -149,6 +153,14 @@
        };
 
 	</script>
+  <script type="text/javascript">
+  $(document).ready(function(){
+  $('ul li a').click(function(){
+    $('li a').removeClass("active");
+    $(this).addClass("active");
+  });
+  });
+  </script>
 
   </body>
 </html>

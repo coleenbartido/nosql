@@ -37,34 +37,34 @@
                 <li><a href="createPost.php"><span class="icon-pencil"></span>Write Post</a></li>
               </ul>
             </nav>
-            <nav class="main">
-              <ul>
-                <li class="search">
-                  <a class="fa-search" href="search.php?search='blog'">Search</a>
-                  <form id="search" method="get" action="#">
-                    <input type="text" name="query" placeholder="Search" />
-                  </form>
-                </li>
-                <li class="dropdown">
-                    <a href="../profile.php" class="account" >
-                    <img src="images/avatar.jpg" class="profile-circle"/>
-                    </a>
-                </li>
+						<nav class="main">
+							<ul>
+								<li class="search" style="margin: 0 25px;">
+									<a class="fa-search" href="search.php?search=[keyword]">Search</a>
+									<form id="search" method="get" action="#">
+										<input type="text" name="query" placeholder="Search" />
+									</form>
+								</li>
+								<li class="dropdown">
+										<a href="../profile.php" class="account" >
+											<img src="../assets/dp.jpg" class="profile-circle"/>
+										</a>
+								</li>
 
 
 
-              </ul>
-            </nav>
+							</ul>
+						</nav>
           </header>
-          
+
               <!-- <h1>SEARCH</h1> -->
 
 
           <?php
-              require '../vendor/autoload.php'; 
+              require '../vendor/autoload.php';
 
                 $connection = new MongoDB\Client("mongodb://localhost:27017");
-              
+
                 $db = $connection->bloog;
                   $userCollection = $db->users;
 
@@ -75,18 +75,18 @@
                   //get logged in user's details
                   $userQuery = array("_id" => $userID);
                   $user = $userCollection->findOne($userQuery);
-          
+
                   //get user FOLLOWING for FOLLOW BUTTON
                   $following = [];
 
-                  var_dump($user['following']);
+                  //var_dump($user['following']);
 
                   if(isset($user['following']))
                   {
 
                     foreach($user['following'] as $follow)
                     {
-                      
+
                         array_push($following, $follow['username']);
                     }
                   }
@@ -146,9 +146,9 @@
                                 <div class="user-icon col-md-3">
                                     <img src="../assets/noface.png">
                                 </div>
-                                
+
                                 <div class="user-buttons col-md-2">
-                                    <?php 
+                                    <?php
                                       if($user['username'] == $username)
                                       {
                                          echo '<a href="../profile.php">Go to your profile.</a>';
@@ -170,11 +170,11 @@
                                       }
                                     ?>
                                 </div>
-                                
+
                                 <div class="user-details col-md-6">
                                     <h1> <?php echo $user['name'] ?> </h1>
                                     <a href="#"> <?php echo $user['username'] ?> </a> <br>
-                    
+
                                     <div class="follower-count col-md-4">
                                         <h3><?php echo count($user['followers'])?></h3>
                                         <h3>FOLLOWERS</h3>
@@ -187,7 +187,7 @@
                               </div>
                             </div>
 
-                            
+
 
           <?php
 
@@ -195,12 +195,12 @@
                   }
                     echo '</div>';
                   echo '</div>';
-                  
-          ?>              
 
-                         
+          ?>
 
-          
+
+
+
 
       </div>
 
