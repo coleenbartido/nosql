@@ -41,22 +41,40 @@
 							</ul>
 						</nav>
 						<nav class="main">
-							<ul>
+							<!--ul>
 								<li class="search" style="margin: 0 25px;">
-									<a class="fa-search" href="view/search.php?searchTerm='blog'">Search</a>
+									<a class="fa-search" href="view/search.php?search=">Search</a>
 									<form id="search" method="get" action="#">
 										<input type="text" name="query" placeholder="Search" />
 									</form>
 								</li>
 								<li class="dropdown">
-										<a href="profile.php" class="account" >
-											<img src="assets/dp.jpg" class="profile-circle"/>
-										</a>
+									<a href="profile.php" class="account" >
+										<img src="assets/dp.jpg" class="profile-circle"/>
+									</a>
+
+									<ul class="dropdown-menu">
+		                <li><a class="dropdown-item" href="#">Logout</a></li>
+		              </ul>
 								</li>
+							</ul-->
 
-
-
-							</ul>
+							<ul class="">
+								<li class="search" style="margin: 0 25px;">
+									<a class="fa-search" href="view/search.php?search=">Search</a>
+									<form id="search" method="get" action="#">
+										<input type="text" name="query" placeholder="Search" />
+									</form>
+								</li>
+								<li class="dropdown">
+									<a href="profile.php" class="account-active dropdown-toggle" data-toggle="dropdown">
+										<img src="assets/dp.jpg" class="profile-circle"/>
+									</a>
+		              <ul class="dropdown-menu">
+		                <li><a href="#">Logout</a></li>
+		              </ul>
+		            </li>
+		          </ul>
 						</nav>
 					</header>
 
@@ -100,6 +118,9 @@
 							$editprofile = 0;
 
 					echo '<div class="main col-md-12 article-post" >';
+						echo '<div class="col-md-12">';
+							echo '<center><h1 style="color: #2EAABE">PROFILE</h1></center>';
+						echo '</div>';
 						echo '<div class="user-profile col-md-offset-2 col-md-8">';
 							echo '<div class="user-icon col-md-3">';
 								echo '<img src="assets/dp.jpg">';
@@ -108,10 +129,12 @@
 								echo '<h1>' . $user['name'] .'</h1>';
 								echo '<a href="#">@'. $username .'</a> <br>';
 								echo '<div class="follower-count col-md-4">';
-									echo '<h3>FOLLOWERS</h3>';
+									echo '<h3 class="h3count">'. count($followers) .'</h3>';
+									echo '<h3 class="h3label">FOLLOWERS</h3>';
 								echo '</div>';
 								echo '<div class="following-count col-md-4">';
-									echo '<h3>FOLLOWING</h3>';
+									echo '<h3 class="h3count">'. count($following) .'</h3>';
+									echo '<h3 class="h3label">FOLLOWING</h3>';
 								echo '</div>';
 							echo '</div>';
 						echo '</div>';
@@ -165,6 +188,9 @@
 
 
 		<!-- Scripts -->
+
+			<script type="text/javascript">
+			</script>
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/skel.min.js"></script>
 			<script src="assets/js/util.js"></script>

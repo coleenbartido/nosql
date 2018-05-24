@@ -47,14 +47,14 @@
 						<h1><a href="#">Bloog</a></h1>
 						<nav class="links">
 							<ul>
-								<li><a href="#"><span class="icon-home2"></span>Home</a></li>
+								<li><a href="#" class="active"><span class="icon-home2"></span>Home</a></li>
 								<li><a href="view/createPost.php"><span class="icon-pencil"></span>Write Post</a></li>
 							</ul>
 						</nav>
 						<nav class="main">
 							<ul>
 								<li class="search" style="margin: 0 25px;">
-									<a class="fa-search" href="view/search.php?searchTerm='blog'">Search</a>
+									<a class="fa-search" href="view/search.php?search=[keyword]">Search</a>
 									<form id="search" method="get" action="#">
 										<input type="text" name="query" placeholder="Search" />
 									</form>
@@ -202,6 +202,7 @@
 
 
 		<!-- Scripts -->
+		
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/skel.min.js"></script>
 			<script src="assets/js/util.js"></script>
