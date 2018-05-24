@@ -32,7 +32,7 @@
 		<link rel="stylesheet" href="https://i.icomoon.io/public/temp/4045dc6036/UntitledProject/style.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 		<link rel="stylesheet" href="assets/css/main.css" />
-
+		<link rel="stylesheet" href="assets/css/user-profile.css">
 
 
 		<link rel="icon" href="assets/bloog-logo.png" type="image/gif" sizes="16x16">
@@ -53,7 +53,7 @@
 						</nav>
 						<nav class="main">
 							<ul>
-								<li class="search">
+								<li class="search" style="margin: 0 25px;">
 									<a class="fa-search" href="view/search.php?searchTerm='blog'">Search</a>
 									<form id="search" method="get" action="#">
 										<input type="text" name="query" placeholder="Search" />
@@ -61,7 +61,7 @@
 								</li>
 								<li class="dropdown">
 										<a href="profile.php" class="account" >
-										<img src="images/avatar.jpg" class="profile-circle"/>
+											<img src="assets/dp.jpg" class="profile-circle"/>
 										</a>
 								</li>
 
@@ -135,7 +135,7 @@
 
 
         					usort($timeline, function($a, $b){
-        						
+
         			 			//if(strtotime($a['timestamp']) == strtotime($b['timestamp'])) return 0;
 								// return ($a<$b)? -1:1;
 								return strtotime($b['timestamp']) - strtotime($a['timestamp']);
