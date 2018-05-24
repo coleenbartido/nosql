@@ -97,6 +97,7 @@
         			$postQuery = array("username" => strval($username));
         			$options = ['sort' => ['timestamp' => -1]];
         			$posts = $postCollection->find($postQuery, $options)->toArray();
+							$editprofile = 0;
 
 					echo '<div class="main col-md-12 article-post" >';
 						echo '<div class="user-profile col-md-offset-2 col-md-8">';
