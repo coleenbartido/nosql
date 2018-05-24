@@ -173,7 +173,7 @@
 										echo '<div class="img__wrap">';
 											echo '<a href="#" class="image"><img class="img__img" src="https://images.pexels.com/photos/925682	/pexels-photo-925682.png?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" 	alt="" /></a>';
 										echo '<div class="img__description">';
-												echo '<a href="#" class="author"><img src="https://images.pexels.com/photos/235444/		pexels-photo-235444.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="" /><p>' .$post['name'] . '</p></a>';
+												echo '<a href="#" class="author"><img src="https://images.pexels.com/photos/235444/		pexels-photo-235444.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="" /><p>' .$post['username'] . '</p></a>';
 											echo '</div>';
 										echo '</div>';
 									echo '</article>';

@@ -79,13 +79,15 @@
                   //get user FOLLOWING for FOLLOW BUTTON
                   $following = [];
 
+                  var_dump($user['following']);
+
                   if(isset($user['following']))
                   {
 
                     foreach($user['following'] as $follow)
                     {
                       
-                        array_push($following, $follow);
+                        array_push($following, $follow['username']);
                     }
                   }
 
