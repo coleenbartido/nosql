@@ -42,7 +42,7 @@
 						</nav>
 						<nav class="main">
 							<ul>
-								<li class="search">
+								<li class="search" style="margin: 0 25px;">
 									<a class="fa-search" href="view/search.php?searchTerm='blog'">Search</a>
 									<form id="search" method="get" action="#">
 										<input type="text" name="query" placeholder="Search" />
@@ -50,7 +50,7 @@
 								</li>
 								<li class="dropdown">
 										<a href="profile.php" class="account" >
-										<img src="images/avatar.jpg" class="profile-circle"/>
+											<img src="assets/dp.jpg" class="profile-circle"/>
 										</a>
 								</li>
 
@@ -97,18 +97,19 @@
         			$postQuery = array("username" => strval($username));
         			$options = ['sort' => ['timestamp' => -1]];
         			$posts = $postCollection->find($postQuery, $options)->toArray();
+							$editprofile = 0;
 
 					echo '<div class="main col-md-12 article-post" >';
 						echo '<div class="user-profile col-md-offset-2 col-md-8">';
 							echo '<div class="user-icon col-md-3">';
-
+								echo '<img src="assets/dp.jpg">';
 							echo '</div>';
 							echo '<div class="user-buttons col-md-2">';
-
+								echo '<a href= '. $editprofile .' >Edit Profile <i class="fa fa-pencil" aria-hidden="true"></i></a>';
 							echo '</div>';
 							echo '<div class="user-details col-md-6">';
 								echo '<h1>' . $user['name'] .'</h1>';
-								echo '<a href="#">'. $username .'</a> <br>';
+								echo '<a href="#">@'. $username .'</a> <br>';
 								echo '<div class="follower-count col-md-4">';
 									echo '<h3>FOLLOWERS</h3>';
 								echo '</div>';
@@ -133,7 +134,7 @@
     								$delete = "controller/dashboardController.php?functionCall=delete&postID=" . $post['_id'] . "&time=" . $post['time'];
     								echo '<div class="post-temp col-md-offset-2 col-md-8">';
 											echo '<div class="icon-holder col-md-2">';
-													echo '<img src="">';
+												echo '<img src="assets/dp.jpg">';
 											echo '</div>';
 											echo '<div class="details col-md-6">';
 												echo '<h1>' . $post['title'].'</h1>';
