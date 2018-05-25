@@ -154,3 +154,8 @@
   color: #2EAABE !important;
   font-weight: bolder !important;
 }
+
+.user-buttons {
+  display: inline;
+  top: 25px;
+}

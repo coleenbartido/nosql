@@ -38,22 +38,22 @@
               </ul>
             </nav>
 						<nav class="main">
-							<ul>
-								<li class="search" style="margin: 0 25px;">
-									<a class="fa-search" href="search.php?search=[keyword]">Search</a>
-									<form id="search" method="get" action="#">
-										<input type="text" name="query" placeholder="Search" />
+							<ul class="">
+								<li>
+									<form class="form-search">
+											<div class="input-append">
+													<input type="text" class="span2" placeholder="Search...">
+													<button type="submit" class="">Search</button>
+											</div>
 									</form>
 								</li>
-								<li class="dropdown">
-										<a href="../profile.php" class="account" >
-											<img src="../assets/dp.jpg" class="profile-circle"/>
-										</a>
-								</li>
-
-
-
-							</ul>
+								<li class="">
+									<a href="../profile.php" class="account">
+										<img src="../assets/dp.jpg" class="profile-circle"/>
+									</a>
+		            </li>
+								<li><button class="btn-logout">Logout</button></li>
+		          </ul>
 						</nav>
           </header>
 
@@ -158,30 +158,30 @@
 
                                         if(in_array($user['username'], $following))
                                         {
-                                            echo "FOLLOWING";
+                                            echo '<a class="btn btn-follow">FOLLOWING</a>';
 
                                         }
                                         else
                                         {
                                             $link = "../controller/userController.php?functionCall=follow&username=" . $user['username'] . '&userId=' . $user['_id'] .'&search=' . $searchQuery;
-                                            echo '<a href='. $link .'>FOLLOW</a>';
+                                            echo '<a href='. $link .' class="btn btn-follow" >FOLLOW</a>';
                                         }
 
                                       }
                                     ?>
                                 </div>
 
-                                <div class="user-details col-md-6">
+                                <div class="user-details col-md-5">
                                     <h1> <?php echo $user['name'] ?> </h1>
-                                    <a href="#"> <?php echo $user['username'] ?> </a> <br>
+                                    <a href="#"> @<?php echo $user['username'] ?> </a> <br>
 
                                     <div class="follower-count col-md-4">
-                                        <h3><?php echo count($user['followers'])?></h3>
-                                        <h3>FOLLOWERS</h3>
+                                        <h3 class="h3count"><?php echo count($user['followers'])?></h3>
+                                        <h3 class="h3label">FOLLOWERS</h3>
                                     </div>
                                     <div class="following-count col-md-4">
-                                        <h3><?php echo count($user['following'])?></h3>
-                                        <h3>FOLLOWING</h3>
+                                        <h3 class="h3count"><?php echo count($user['following'])?></h3>
+                                        <h3 class="h3label">FOLLOWING</h3>
                                     </div>
                                 </div>
                               </div>

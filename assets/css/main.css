@@ -3913,8 +3913,12 @@ hr{
 	height: 100px;
 }
 
+.form-search {
+	margin-right: 30px !important;
+}
+
 #header form input{
-	height: 100%;
+	height: -webkit-fill-available;
 	border: none;
 	width: 15em;
 	-webkit-transition: width 1s;
@@ -3929,7 +3933,40 @@ hr{
 	width:20em;
 }
 
-#header form button{
-	height: 100%;
-display:
+#header form button, li button{
+	height: -webkit-fill-available;
+}
+
+.btn-logout {
+	margin-right: 25px;
+	box-shadow: none !important;
+	padding: 0;
+}
+
+.btn-logout:focus, .btn-logout:visited {
+  outline: 0;
+}
+
+.btn-follow {
+	border-radius: 0;
+	box-shadow: inset 0 0 0 1px rgba(160, 160, 160, 0.3);
+	color: #3c3b3b !important;
+	font-family: "Raleway", Helvetica, sans-serif;
+	font-size: 0.6em;
+	font-weight: 800;
+	float: right;
+  margin-top: 25px;
+	margin-right: 25px;
+	letter-spacing: 0.25em;
+	line-height: 4.8125em;
+	padding: 0 2.5em;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	white-space: nowrap;
+}
+
+.btn-follow:hover, .btn-follow:focus, .btn-follow:visited {
+	box-shadow: inset 0 0 0 1px #3C5DA0;
+	color: #3C5DA0 !important;
 }
