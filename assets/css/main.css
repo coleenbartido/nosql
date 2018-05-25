@@ -3913,8 +3913,12 @@ hr{
 	height: 100px;
 }
 
+.form-search {
+	margin-right: 30px !important;
+}
+
 #header form input{
-	height: 100%;
+	height: -webkit-fill-available;
 	border: none;
 	width: 15em;
 	-webkit-transition: width 1s;
@@ -3929,7 +3933,12 @@ hr{
 	width:20em;
 }
 
-#header form button{
-	height: 100%;
-display:
+#header form button, li button{
+	height: -webkit-fill-available;
+}
+
+.btn-logout {
+	margin-right: 25px;
+	box-shadow: none !important;
+	padding: 0;
 }

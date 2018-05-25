@@ -38,6 +38,7 @@
 	    <link rel="stylesheet" href="https://i.icomoon.io/public/temp/a9a70307e1/UntitledProject/style.css">
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	    <link rel="stylesheet" href="../assets/css/main.css" />
+      <link rel="stylesheet" href="../assets/css/user-profile.css">
 
 			<link rel="icon" href="assets/bloog-logo.png" type="image/gif" sizes="16x16">
 	  </head>
@@ -55,22 +56,24 @@
 	          </ul>
 	        </nav>
 
+	        <nav class="main">
+            <ul class="">
+              <li>
+                <form class="form-search">
+                    <div class="input-append">
+                        <input type="text" class="span2" placeholder="Search...">
+                        <button type="submit" class="">Search</button>
 
-
-	            <!-- <li class="dropdown">
-	                <a href="../profile.php" class="account" >
-	                <img src="https://images.pexels.com/photos/925682/pexels-photo-925682.png?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" class="profile-circle"/>
-	                </a>
-	            </li> -->
-
-	        <nav class="main search">
-	          <form class="form-search">
-	              <div class="input-append">
-	                  <input type="text" class="span2" placeholder="Search...">
-	                  <button type="submit" class="">Search</button>
-
-	              </div>
-	          </form>
+                    </div>
+                </form>
+              </li>
+              <li class="">
+                <a href="profile.php" class="account">
+                  <img src="assets/dp.jpg" class="profile-circle"/>
+                </a>
+              </li>
+              <li><button class="btn-logout">Logout</button></li>
+            </ul>
 	        </nav>
 
 	      </header>

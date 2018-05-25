@@ -41,41 +41,25 @@
 							</ul>
 						</nav>
 						<nav class="main">
-							<!--ul>
-								<li class="search" style="margin: 0 25px;">
-									<a class="fa-search" href="view/search.php?search=">Search</a>
-									<form id="search" method="get" action="#">
-										<input type="text" name="query" placeholder="Search" />
-									</form>
-								</li>
-								<li class="dropdown">
-									<a href="profile.php" class="account" >
-										<img src="assets/dp.jpg" class="profile-circle"/>
-									</a>
-
-									<ul class="dropdown-menu">
-		                <li><a class="dropdown-item" href="#">Logout</a></li>
-		              </ul>
-								</li>
-							</ul-->
-
 							<ul class="">
-								<li class="search" style="margin: 0 25px;">
-									<a class="fa-search" href="view/search.php?search=">Search</a>
-									<form id="search" method="get" action="#">
-										<input type="text" name="query" placeholder="Search" />
+								<li>
+									<form class="form-search">
+											<div class="input-append">
+													<input type="text" class="span2" placeholder="Search...">
+													<button type="submit" class="">Search</button>
+
+											</div>
 									</form>
 								</li>
-								<li class="dropdown">
-									<a href="profile.php" class="account-active dropdown-toggle" data-toggle="dropdown">
+								<li class="">
+									<a href="profile.php" class="account-active">
 										<img src="assets/dp.jpg" class="profile-circle"/>
 									</a>
-		              <ul class="dropdown-menu">
-		                <li><a href="#">Logout</a></li>
-		              </ul>
 		            </li>
+								<li><button class="btn-logout">Logout</button></li>
 		          </ul>
 						</nav>
+
 					</header>
 
 				<?php

@@ -38,22 +38,23 @@
               </ul>
             </nav>
 						<nav class="main">
-							<ul>
-								<li class="search" style="margin: 0 25px;">
-									<a class="fa-search" href="search.php?search=[keyword]">Search</a>
-									<form id="search" method="get" action="#">
-										<input type="text" name="query" placeholder="Search" />
+							<ul class="">
+								<li>
+									<form class="form-search">
+											<div class="input-append">
+													<input type="text" class="span2" placeholder="Search...">
+													<button type="submit" class="">Search</button>
+
+											</div>
 									</form>
 								</li>
-								<li class="dropdown">
-										<a href="../profile.php" class="account" >
-											<img src="../assets/dp.jpg" class="profile-circle"/>
-										</a>
-								</li>
-
-
-
-							</ul>
+								<li class="">
+									<a href="profile.php" class="account">
+										<img src="assets/dp.jpg" class="profile-circle"/>
+									</a>
+		            </li>
+								<li><button class="btn-logout">Logout</button></li>
+		          </ul>
 						</nav>
           </header>
 
