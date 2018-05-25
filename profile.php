@@ -43,23 +43,28 @@
 						<nav class="main">
 							<ul class="">
 								<li>
-									<form class="form-search">
+									<form class="form-search" action="controller/dashboardController.php" method="POST">
 											<div class="input-append">
-													<input type="text" class="span2" placeholder="Search...">
+													<input type="hidden" name="functionCall" value="search">
+													<input type="text" name="search" class="span2" placeholder="Search...">
 													<button type="submit" class="">Search</button>
 
 											</div>
 									</form>
 								</li>
 								<li class="">
-									<a href="profile.php" class="account-active">
+									<a href="profile.php" class="account">
 										<img src="assets/dp.jpg" class="profile-circle"/>
 									</a>
 		            </li>
-								<li><button class="btn-logout">Logout</button></li>
+								<li>
+									<form method="POST" action="controller/dashboardController.php">
+										<input type="hidden" name="functionCall" value="logout">
+										<button class="btn-logout" type="submit">Logout</button>
+									</form>
+								</li>
 		          </ul>
 						</nav>
-
 					</header>
 
 				<?php
@@ -136,12 +141,14 @@
     							{
     								$edit = "view/editPost.php?postID=" . $post['_id'] . "&time=" . $post['time'];
     								$delete = "controller/dashboardController.php?functionCall=delete&postID=" . $post['_id'] . "&time=" . $post['time'];
+    								$view = "view/viewPost.php?viewPost=". $post['_id'];
+
     								echo '<div class="post-temp col-md-offset-2 col-md-8">';
 											echo '<div class="icon-holder col-md-2">';
 												echo '<img src="assets/dp.jpg">';
 											echo '</div>';
 											echo '<div class="details col-md-6">';
-												echo '<h1>' . $post['title'].'</h1>';
+												echo '<h1><a href=' . $view .'>' . $post['title'].'</a></h1>';
 												echo '<h6>' . $post['timestamp'].'</h6> <br>';
 											echo '</div>';
 											echo '<div class="post-buttons col-md-2">';

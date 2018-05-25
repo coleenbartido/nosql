@@ -22,6 +22,14 @@
 				$blogController->addComment();
 				break;
 
+			case "search":
+				$blogController->search();
+				break;
+
+			case "logout":
+				$blogController->logout();
+				break;
+
 			default: 
 				echo "Function call does not exist";
 				break;
@@ -32,6 +40,7 @@
 			{
 				$blogController->deleteBlogPost();
 			}
+
 			else
 			{
 				header("Location: ../dashboard.php");
@@ -121,12 +130,12 @@
 
 		public function search()
 		{
-			// $searchQuery = $_GET['search'];
+			$search = $_POST['search'];
 
 			// $this->model->search();
 
-			// header('Location: ../search.php?search=' . $searchQuery);
-			// exit;
+			header('Location: ../view/search.php?search=' . $search);
+			exit;
 		}
 
 

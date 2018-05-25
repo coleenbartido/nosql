@@ -56,7 +56,7 @@
 								<li>
 									<form class="form-search" action="controller/dashboardController.php" method="POST">
 											<div class="input-append">
-													<input type="hidden" name="functionCall" value="comment">
+													<input type="hidden" name="functionCall" value="search">
 													<input type="text" name="search" class="span2" placeholder="Search...">
 													<button type="submit" class="">Search</button>
 
@@ -68,7 +68,12 @@
 										<img src="assets/dp.jpg" class="profile-circle"/>
 									</a>
 		            </li>
-								<li><button class="btn-logout" onclick="controller/dashboardController.php?functionCall='logout'">Logout</button></li>
+								<li>
+									<form method="POST" action="controller/dashboardController.php">
+										<input type="hidden" name="functionCall" value="logout">
+										<button class="btn-logout" type="submit">Logout</button>
+									</form>
+								</li>
 		          </ul>
 						</nav>
 					</header>

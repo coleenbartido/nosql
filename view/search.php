@@ -37,25 +37,31 @@
                 <li><a href="createPost.php"><span class="icon-pencil"></span>Write Post</a></li>
               </ul>
             </nav>
-						<nav class="main">
-							<ul class="">
-								<li>
-									<form class="form-search">
-											<div class="input-append">
-													<input type="text" class="span2" placeholder="Search...">
-													<button type="submit" class="">Search</button>
+            <nav class="main">
+              <ul class="">
+                <li>
+                  <form class="form-search" action="../controller/dashboardController.php" method="POST">
+                      <div class="input-append">
+                          <input type="hidden" name="functionCall" value="search">
+                          <input type="text" name="search" class="span2" placeholder="Search...">
+                          <button type="submit" class="">Search</button>
 
-											</div>
-									</form>
-								</li>
-								<li class="">
-									<a href="profile.php" class="account">
-										<img src="assets/dp.jpg" class="profile-circle"/>
-									</a>
-		            </li>
-								<li><button class="btn-logout">Logout</button></li>
-		          </ul>
-						</nav>
+                      </div>
+                  </form>
+                </li>
+                <li class="">
+                  <a href="profile.php" class="account">
+                    <img src="assets/dp.jpg" class="profile-circle"/>
+                  </a>
+                </li>
+                <li>
+                  <form method="POST" action="../controller/dashboardController.php">
+                      <input type="hidden" name="functionCall" value="logout">
+                      <button class="btn-logout" type="submit">Logout</button>
+                  </form>
+                </li>
+              </ul>
+            </nav>
           </header>
 
               <!-- <h1>SEARCH</h1> -->
