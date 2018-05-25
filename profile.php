@@ -128,7 +128,7 @@
 							echo '</div>';
 						echo '</div>';
 
-						echo '<div class="posts-feed">';
+						echo '<div class="posts-feed" style="text-align: center;">';
 							if($posts == NULL)
     						{
     							echo "NO POSTS YET.";

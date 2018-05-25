@@ -120,9 +120,9 @@
 	        </div>
 	      </div> -->
 
-	       <div class="container col col-md-7 col">
-   			
-		    	<div id="editor" >
+	       <div class="container col col-md-12 col" style="border:none !important; box-shadow:none !important;">
+
+		    	<div class="col-md-12" id="editor" style="border:none !important; box-shadow:none !important;">
 		    		<?php echo file_get_contents($post['file']);?>
 		    	</div>
 		  </div>
@@ -233,7 +233,7 @@
 	  <script>
 	  	var toolbarOptions = [
         //[{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-        
+
 		];
   		var quill = new Quill('#editor', {
   			modules: {

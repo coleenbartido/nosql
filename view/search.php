@@ -50,8 +50,8 @@
                   </form>
                 </li>
                 <li class="">
-                  <a href="profile.php" class="account">
-                    <img src="assets/dp.jpg" class="profile-circle"/>
+                  <a href="../profile.php" class="account">
+                    <img src="../assets/dp.jpg" class="profile-circle"/>
                   </a>
                 </li>
                 <li>
