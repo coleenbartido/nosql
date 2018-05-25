@@ -35,9 +35,14 @@
 
 	    <title>View Post | Bloog</title>
 
+	    <!--QUILL TEXT EDITOR-->
+    	<link href="https://cdn.quilljs.com/1.3.4/quill.snow.css" rel="stylesheet">
+    	<script src="https://cdn.quilljs.com/1.3.4/quill.js"></script>
+
 	    <link rel="stylesheet" href="https://i.icomoon.io/public/temp/a9a70307e1/UntitledProject/style.css">
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	    <link rel="stylesheet" href="../assets/css/main.css" />
+      <link rel="stylesheet" href="../assets/css/user-profile.css">
 
 			<link rel="icon" href="assets/bloog-logo.png" type="image/gif" sizes="16x16">
 	  </head>
@@ -46,34 +51,40 @@
 
 		<div>
 	    <!-- Header -->
-	      <header id="header">
-	        <h1><a href="#">Bloog</a></h1>
-	        <nav class="links">
-	          <ul>
-	            <li><a href="../dashboard.php"><span class="icon-home2"></span>Home</a></li>
-	            <li><a href="`../view/createPost.php"><span class="icon-pencil"></span>Write Post</a></li>
-	          </ul>
-	        </nav>
+	     <header id="header">
+            <h1><a href="#">Bloog</a></h1>
+            <nav class="links">
+              <ul>
+                <li><a href="../dashboard.php"><span class="icon-home2"></span>Home</a></li>
+                <li><a href="createPost.php"><span class="icon-pencil"></span>Write Post</a></li>
+              </ul>
+            </nav>
+            <nav class="main">
+              <ul class="">
+                <li>
+                  <form class="form-search" action="../controller/dashboardController.php" method="POST">
+                      <div class="input-append">
+                          <input type="hidden" name="functionCall" value="search">
+                          <input type="text" name="search" class="span2" placeholder="Search...">
+                          <button type="submit" class="">Search</button>
 
-
-
-	            <!-- <li class="dropdown">
-	                <a href="../profile.php" class="account" >
-	                <img src="https://images.pexels.com/photos/925682/pexels-photo-925682.png?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" class="profile-circle"/>
-	                </a>
-	            </li> -->
-
-	        <nav class="main search">
-	          <form class="form-search">
-	              <div class="input-append">
-	                  <input type="text" class="span2" placeholder="Search...">
-	                  <button type="submit" class="">Search</button>
-
-	              </div>
-	          </form>
-	        </nav>
-
-	      </header>
+                      </div>
+                  </form>
+                </li>
+                <li class="">
+                  <a href="profile.php" class="account">
+                    <img src="assets/dp.jpg" class="profile-circle"/>
+                  </a>
+                </li>
+                <li>
+                	<form method="POST" action="../controller/dashboardController.php">
+                      <input type="hidden" name="functionCall" value="logout">
+                      <button class="btn-logout" type="submit">Logout</button>
+                  </form>
+                </li>
+              </ul>
+            </nav>
+          </header>
 	  </div>
 
 
@@ -103,9 +114,18 @@
 	      </div>
 
 
-	      <div class="col-md-11 article-content">
-	        <p><?php echo file_get_contents($post['file']);?></p>
-	      </div>
+	      <!-- <div class="col-md-11 article-content">
+	      	<div id="editor" style="border:1px solid red; height: 100px;">
+	        	<?php echo file_get_contents($post['file']);?>
+	        </div>
+	      </div> -->
+
+	       <div class="container col col-md-7 col">
+   			
+		    	<div id="editor" >
+		    		<?php echo file_get_contents($post['file']);?>
+		    	</div>
+		  </div>
 
 	      <hr style=""/>
 
@@ -210,7 +230,19 @@
 	    </div>
 	  </div>
 
-
+	  <script>
+	  	var toolbarOptions = [
+        //[{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+        
+		];
+  		var quill = new Quill('#editor', {
+  			modules: {
+    			toolbar: false
+  			},
+    		theme: 'snow',
+    		readOnly: true
+  		});
+	  </script>
 
 	</body>
 	</html>

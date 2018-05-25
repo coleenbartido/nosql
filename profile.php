@@ -41,39 +41,28 @@
 							</ul>
 						</nav>
 						<nav class="main">
-							<!--ul>
-								<li class="search" style="margin: 0 25px;">
-									<a class="fa-search" href="view/search.php?search=">Search</a>
-									<form id="search" method="get" action="#">
-										<input type="text" name="query" placeholder="Search" />
-									</form>
-								</li>
-								<li class="dropdown">
-									<a href="profile.php" class="account" >
-										<img src="assets/dp.jpg" class="profile-circle"/>
-									</a>
-
-									<ul class="dropdown-menu">
-		                <li><a class="dropdown-item" href="#">Logout</a></li>
-		              </ul>
-								</li>
-							</ul-->
-
 							<ul class="">
-								<li class="search" style="margin: 0 25px;">
-									<a class="fa-search" href="view/search.php?search=">Search</a>
-									<form id="search" method="get" action="#">
-										<input type="text" name="query" placeholder="Search" />
+								<li>
+									<form class="form-search" action="controller/dashboardController.php" method="POST">
+											<div class="input-append">
+													<input type="hidden" name="functionCall" value="search">
+													<input type="text" name="search" class="span2" placeholder="Search...">
+													<button type="submit" class="">Search</button>
+
+											</div>
 									</form>
 								</li>
-								<li class="dropdown">
-									<a href="profile.php" class="account-active dropdown-toggle" data-toggle="dropdown">
+								<li class="">
+									<a href="profile.php" class="account">
 										<img src="assets/dp.jpg" class="profile-circle"/>
 									</a>
-		              <ul class="dropdown-menu">
-		                <li><a href="#">Logout</a></li>
-		              </ul>
 		            </li>
+								<li>
+									<form method="POST" action="controller/dashboardController.php">
+										<input type="hidden" name="functionCall" value="logout">
+										<button class="btn-logout" type="submit">Logout</button>
+									</form>
+								</li>
 		          </ul>
 						</nav>
 					</header>
@@ -152,12 +141,14 @@
     							{
     								$edit = "view/editPost.php?postID=" . $post['_id'] . "&time=" . $post['time'];
     								$delete = "controller/dashboardController.php?functionCall=delete&postID=" . $post['_id'] . "&time=" . $post['time'];
+    								$view = "view/viewPost.php?viewPost=". $post['_id'];
+
     								echo '<div class="post-temp col-md-offset-2 col-md-8">';
 											echo '<div class="icon-holder col-md-2">';
 												echo '<img src="assets/dp.jpg">';
 											echo '</div>';
 											echo '<div class="details col-md-6">';
-												echo '<h1>' . $post['title'].'</h1>';
+												echo '<h1><a href=' . $view .'>' . $post['title'].'</a></h1>';
 												echo '<h6>' . $post['timestamp'].'</h6> <br>';
 											echo '</div>';
 											echo '<div class="post-buttons col-md-2">';
